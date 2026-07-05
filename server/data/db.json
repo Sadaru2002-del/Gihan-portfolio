@@ -1,0 +1,1749 @@
+{
+  "users": [
+    {
+      "_id": "557e8110ea1816d54090ea24",
+      "name": "Portfolio Admin",
+      "email": "thanivunum@gmail.com",
+      "password": "$2b$10$AT2DRQ.iaBM92rqX85KvPujtfdvgjUzMqYOIN8Uha3q5H8k4HUrAa",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop",
+      "bio": "Portfolio Administrator",
+      "createdAt": "2026-06-13T17:25:21.955Z",
+      "updatedAt": "2026-06-14T00:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "_id": "914d1893d9c53276e3bb6ad1",
+      "title": "Lumina Dining Platform",
+      "description": "Advanced restaurant booking and digital ordering system with multi-role dashboards.",
+      "longDescription": "A comprehensive digital system built for restaurants to manage online reservations, visual menus, dynamic orders, and customer billing. Implements secure JWT authentication, detailed logs, dynamic role dashboard widgets, and complex aggregation analytics for restaurant owners.",
+      "category": "Web App",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Tailwind CSS"
+      ],
+      "githubLink": "https://github.com/GihanSuminda/Lumina-Dining",
+      "liveLink": "https://lumina-dining.demo.gihan.dev",
+      "status": "Completed",
+      "featured": true,
+      "codeMetrics": {
+        "linesOfCode": 15400,
+        "testCoverage": 92
+      },
+      "performanceMetrics": {
+        "lighthouseScore": 98,
+        "loadTimeMs": 420
+      },
+      "architectureDiagram": "<svg viewBox=\"0 0 800 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%; height:auto;\">\n          <rect width=\"800\" height=\"200\" rx=\"12\" fill=\"#0b0b12\" stroke=\"rgba(255,255,255,0.05)\"/>\n          <!-- Clients -->\n          <rect x=\"50\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(168, 85, 247, 0.1)\" stroke=\"#a855f7\" stroke-width=\"2\"/>\n          <text x=\"110\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">React SPA</text>\n          <!-- API Gateway / Express -->\n          <rect x=\"340\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(236, 72, 153, 0.1)\" stroke=\"#ec4899\" stroke-width=\"2\"/>\n          <text x=\"400\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">Express.js API</text>\n          <!-- Database -->\n          <rect x=\"630\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(99, 102, 241, 0.1)\" stroke=\"#6366f1\" stroke-width=\"2\"/>\n          <text x=\"690\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">MongoDB</text>\n          <!-- Connectors -->\n          <path d=\"M 170 100 L 340 100\" stroke=\"#a855f7\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/>\n          <polygon points=\"340,100 330,95 330,105\" fill=\"#a855f7\"/>\n          <path d=\"M 460 100 L 630 100\" stroke=\"#ec4899\" stroke-width=\"2\" stroke-dasharray=\"4 4\"/>\n          <polygon points=\"630,100 620,95 620,105\" fill=\"#ec4899\"/>\n        </svg>",
+      "order": 1,
+      "createdAt": "2026-06-13T17:25:21.962Z",
+      "updatedAt": "2026-06-13T17:25:21.962Z"
+    },
+    {
+      "_id": "f018e77f6a4226401906ee57",
+      "title": "Cognitive Task Grid",
+      "description": "An AI-powered project scheduler and task estimation model for Agile squads.",
+      "longDescription": "Leverages statistical inference and historical team velocities to predict project timelines and auto-assign tasks. Features dynamic dependency visualization trees and automated sprint retrospectives.",
+      "category": "AI / ML",
+      "technologies": [
+        "React",
+        "Python",
+        "Flask",
+        "MySQL",
+        "CSS Modules"
+      ],
+      "githubLink": "https://github.com/GihanSuminda/Cognitive-Task-Grid",
+      "liveLink": "https://cognitive-tasks.demo.gihan.dev",
+      "status": "In Progress",
+      "featured": true,
+      "codeMetrics": {
+        "linesOfCode": 8900,
+        "testCoverage": 84
+      },
+      "performanceMetrics": {
+        "lighthouseScore": 95,
+        "loadTimeMs": 680
+      },
+      "architectureDiagram": "<svg viewBox=\"0 0 800 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"width:100%; height:auto;\">\n          <rect width=\"800\" height=\"200\" rx=\"12\" fill=\"#0b0b12\" stroke=\"rgba(255,255,255,0.05)\"/>\n          <rect x=\"50\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(168, 85, 247, 0.1)\" stroke=\"#a855f7\" stroke-width=\"2\"/>\n          <text x=\"110\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">Vite App</text>\n          <rect x=\"340\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(236, 72, 153, 0.1)\" stroke=\"#ec4899\" stroke-width=\"2\"/>\n          <text x=\"400\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">Flask / ML</text>\n          <rect x=\"630\" y=\"70\" width=\"120\" height=\"60\" rx=\"8\" fill=\"rgba(99, 102, 241, 0.1)\" stroke=\"#6366f1\" stroke-width=\"2\"/>\n          <text x=\"690\" y=\"105\" fill=\"#f8fafc\" font-size=\"12\" text-anchor=\"middle\" font-family=\"monospace\">MySQL</text>\n          <path d=\"M 170 100 L 340 100\" stroke=\"#a855f7\" stroke-width=\"2\"/>\n          <polygon points=\"340,100 330,95 330,105\" fill=\"#a855f7\"/>\n          <path d=\"M 460 100 L 630 100\" stroke=\"#ec4899\" stroke-width=\"2\"/>\n          <polygon points=\"630,100 620,95 620,105\" fill=\"#ec4899\"/>\n        </svg>",
+      "order": 2,
+      "createdAt": "2026-06-13T17:25:21.963Z",
+      "updatedAt": "2026-06-13T17:25:21.963Z"
+    }
+  ],
+  "blogs": [
+    {
+      "_id": "f931e360ebfdd856a4902c79",
+      "title": "Mastering REST API Security: JWT, Cors, and Helmet in Node.js",
+      "summary": "A complete developer checklist to configure express backends securely for production deployment.",
+      "content": "### Security First: Essential Middleware\n\nWhen launching production APIs in Express, safeguarding endpoints from malicious request patterns is crucial. This article outlines the key steps to implement robust authentication, secure response headers, and rate-limiting.\n\n#### 1. HTTP Header Protection with Helmet\nThe `helmet` middleware secures Express apps by setting various HTTP headers. It prevents common vulnerabilities like Clickjacking, MIME type sniffing, and XSS.\n\n```javascript\nimport helmet from 'helmet';\napp.use(helmet());\n```\n\n#### 2. Cross-Origin Resource Sharing (CORS)\nBe explicit about which domains can invoke your API endpoints:\n\n```javascript\napp.use(cors({\n  origin: 'https://gihan.dev',\n  credentials: true\n}));\n```\n\n#### 3. Token-Based Authentication via JWT\nAlways sign tokens securely and store secrets in environment variables. Avoid storing credentials on client-side state without HTTPS cookies or encrypted stores.",
+      "category": "Backend Security",
+      "tags": [
+        "Security",
+        "Node.js",
+        "Express",
+        "JWT"
+      ],
+      "featured": true,
+      "readingTime": "4 min read",
+      "likes": 12,
+      "bookmarksCount": 4,
+      "comments": [
+        {
+          "name": "Jane Recruiter",
+          "email": "jane@hiring.com",
+          "content": "Very detailed checklist. I will share this with our engineering team!",
+          "approved": true
+        }
+      ],
+      "slug": "mastering-rest-api-security-jwt-cors-and-helmet-in-node-js",
+      "createdAt": "2026-06-13T17:25:21.970Z",
+      "updatedAt": "2026-06-13T17:25:21.970Z"
+    },
+    {
+      "_id": "a9664c88dd74cd8850fb2a7f",
+      "title": "Building Accessible UIs: An HCI Perspective",
+      "summary": "How to combine semantic HTML and ARIA standards to create highly accessible web platforms.",
+      "content": "### Design for Everyone\n\nIn modern software engineering, web accessibility (a11y) is not a feature—it is a core requirement. This article reviews design considerations based on Human-Computer Interaction (HCI) research.\n\n#### Key Principles\n1. **Semantic Markup**: Avoid overuse of `<div />` containers. Prefer semantic wrappers like `<header />`, `<main />`, and `<button />`.\n2. **Keyboard Navigation**: Ensure all interactive elements can be focused using the `Tab` key and triggered with `Enter` or `Space`.\n3. **Contrast Ratios**: Check that display text satisfies WCAG AAA contrast metrics against background gradients.",
+      "category": "UI/UX Design",
+      "tags": [
+        "HCI",
+        "Accessibility",
+        "A11y",
+        "HTML"
+      ],
+      "featured": false,
+      "readingTime": "6 min read",
+      "likes": 8,
+      "bookmarksCount": 2,
+      "slug": "building-accessible-uis-an-hci-perspective",
+      "createdAt": "2026-06-13T17:25:21.971Z",
+      "updatedAt": "2026-06-13T17:25:21.971Z"
+    }
+  ],
+  "messages": [],
+  "skills": [
+    {
+      "_id": "19c877a3781f544884555758",
+      "name": "HTML5 & CSS3",
+      "category": "Frontend",
+      "level": 90,
+      "icon": "Html5",
+      "color": "#E34F26",
+      "relationshipTree": [
+        "CSSGrid",
+        "Flexbox"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.957Z",
+      "updatedAt": "2026-06-13T17:25:21.957Z"
+    },
+    {
+      "_id": "3de39d6f13521a3b4ac69c87",
+      "name": "JavaScript (ES6+)",
+      "category": "Frontend",
+      "level": 88,
+      "icon": "Cpu",
+      "color": "#F7DF1E",
+      "relationshipTree": [
+        "React",
+        "Node.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.957Z",
+      "updatedAt": "2026-06-13T17:25:21.957Z"
+    },
+    {
+      "_id": "15aed589a680f47d3bb50457",
+      "name": "React.js",
+      "category": "Frontend",
+      "level": 85,
+      "icon": "React",
+      "color": "#61DAFB",
+      "relationshipTree": [
+        "Tailwind CSS",
+        "Express.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.958Z",
+      "updatedAt": "2026-06-13T17:25:21.958Z"
+    },
+    {
+      "_id": "71d2f0f53856762f76e2ca59",
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "level": 85,
+      "icon": "Wind",
+      "color": "#06B6D4",
+      "relationshipTree": [
+        "React.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.958Z",
+      "updatedAt": "2026-06-13T17:25:21.958Z"
+    },
+    {
+      "_id": "577e6e456bcf2ccddc067d99",
+      "name": "Bootstrap",
+      "category": "Frontend",
+      "level": 80,
+      "icon": "Layout",
+      "color": "#7952B3",
+      "relationshipTree": [
+        "HTML5 & CSS3"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.958Z",
+      "updatedAt": "2026-06-13T17:25:21.958Z"
+    },
+    {
+      "_id": "8288e5e33e0dfd992ec32b20",
+      "name": "Node.js",
+      "category": "Backend",
+      "level": 82,
+      "icon": "Terminal",
+      "color": "#339933",
+      "relationshipTree": [
+        "Express.js",
+        "MongoDB"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.959Z",
+      "updatedAt": "2026-06-13T17:25:21.959Z"
+    },
+    {
+      "_id": "454febea1f267f3582166168",
+      "name": "Express.js",
+      "category": "Backend",
+      "level": 85,
+      "icon": "Server",
+      "color": "#000000",
+      "relationshipTree": [
+        "Node.js",
+        "JWT Auth"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.959Z",
+      "updatedAt": "2026-06-13T17:25:21.959Z"
+    },
+    {
+      "_id": "607c1c4158d7269aeb279555",
+      "name": "MongoDB",
+      "category": "Database",
+      "level": 80,
+      "icon": "Database",
+      "color": "#47A248",
+      "relationshipTree": [
+        "Node.js",
+        "Mongoose"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.959Z",
+      "updatedAt": "2026-06-13T17:25:21.959Z"
+    },
+    {
+      "_id": "c455901868490b6e35b76659",
+      "name": "MySQL",
+      "category": "Database",
+      "level": 78,
+      "icon": "Database",
+      "color": "#4479A1",
+      "relationshipTree": [
+        "Express.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.959Z",
+      "updatedAt": "2026-06-13T17:25:21.959Z"
+    },
+    {
+      "_id": "cc9c20c1f8296bab9a45116a",
+      "name": "Git & GitHub",
+      "category": "Tools",
+      "level": 85,
+      "icon": "GitBranch",
+      "color": "#F05032",
+      "relationshipTree": [
+        "VS Code"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.960Z",
+      "updatedAt": "2026-06-13T17:25:21.960Z"
+    },
+    {
+      "_id": "e6dd6b14d7b5c3c61e479e3c",
+      "name": "VS Code",
+      "category": "Tools",
+      "level": 90,
+      "icon": "Code",
+      "color": "#007ACC",
+      "relationshipTree": [],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.960Z",
+      "updatedAt": "2026-06-13T17:25:21.960Z"
+    },
+    {
+      "_id": "4f3d6795aa9320293dcbf4cc",
+      "name": "Postman",
+      "category": "Tools",
+      "level": 80,
+      "icon": "Shield",
+      "color": "#FF6C37",
+      "relationshipTree": [
+        "Express.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.960Z",
+      "updatedAt": "2026-06-13T17:25:21.960Z"
+    },
+    {
+      "_id": "cc9d97e6d33da70a4803620f",
+      "name": "Figma",
+      "category": "Tools",
+      "level": 75,
+      "icon": "Figma",
+      "color": "#F24E1E",
+      "relationshipTree": [
+        "React.js"
+      ],
+      "learningProgress": 100,
+      "createdAt": "2026-06-13T17:25:21.960Z",
+      "updatedAt": "2026-06-13T17:25:21.960Z"
+    },
+    {
+      "_id": "17cea5cbd7ef99553ebd1bec",
+      "name": "Software Architecture",
+      "category": "Academic Subject",
+      "level": 80,
+      "icon": "Layers",
+      "color": "#9333EA",
+      "relationshipTree": [
+        "Design Patterns"
+      ],
+      "learningProgress": 95,
+      "createdAt": "2026-06-13T17:25:21.961Z",
+      "updatedAt": "2026-06-13T17:25:21.961Z"
+    },
+    {
+      "_id": "8dd394dfe1f4b18e738e3d57",
+      "name": "Design Patterns",
+      "category": "Academic Subject",
+      "level": 82,
+      "icon": "Grid",
+      "color": "#3B82F6",
+      "relationshipTree": [
+        "Software Architecture"
+      ],
+      "learningProgress": 95,
+      "createdAt": "2026-06-13T17:25:21.961Z",
+      "updatedAt": "2026-06-13T17:25:21.961Z"
+    },
+    {
+      "_id": "e5f29e015a5e0a8da61c0eb4",
+      "name": "Human Computer Interaction",
+      "category": "Academic Subject",
+      "level": 85,
+      "icon": "Users",
+      "color": "#EC4899",
+      "relationshipTree": [
+        "Figma"
+      ],
+      "learningProgress": 98,
+      "createdAt": "2026-06-13T17:25:21.961Z",
+      "updatedAt": "2026-06-13T17:25:21.961Z"
+    },
+    {
+      "_id": "62bcb6e07c5634d44d4bbc89",
+      "name": "Artificial Intelligence",
+      "category": "Academic Subject",
+      "level": 75,
+      "icon": "Cpu",
+      "color": "#10B981",
+      "relationshipTree": [
+        "Logic Programming"
+      ],
+      "learningProgress": 88,
+      "createdAt": "2026-06-13T17:25:21.962Z",
+      "updatedAt": "2026-06-13T17:25:21.962Z"
+    },
+    {
+      "_id": "00cd9f0f9ed292774ca728ce",
+      "name": "Software Quality Assurance",
+      "category": "Academic Subject",
+      "level": 80,
+      "icon": "CheckCircle",
+      "color": "#EF4444",
+      "relationshipTree": [],
+      "learningProgress": 92,
+      "createdAt": "2026-06-13T17:25:21.962Z",
+      "updatedAt": "2026-06-13T17:25:21.962Z"
+    }
+  ],
+  "certificates": [
+    {
+      "_id": "8ff5fac8cca4f9919518923c",
+      "title": "Full Stack Web Development Boot Camp",
+      "issuer": "Udemy / Online Academy",
+      "issueDate": "Aug 2024",
+      "credentialId": "UC-FE128",
+      "credentialUrl": "#",
+      "verificationLink": "#",
+      "badgeIcon": "Award",
+      "category": "Professional Certificate",
+      "order": 1,
+      "createdAt": "2026-06-13T17:25:21.963Z",
+      "updatedAt": "2026-06-13T17:25:21.963Z"
+    },
+    {
+      "_id": "51bd131eda165dcb5be199c4",
+      "title": "Responsive Design with CSS & Tailwind",
+      "issuer": "FreeCodeCamp",
+      "issueDate": "Jan 2024",
+      "credentialId": "FCC-CSS-T",
+      "credentialUrl": "#",
+      "verificationLink": "#",
+      "badgeIcon": "CheckCircle",
+      "category": "Badge",
+      "order": 2,
+      "createdAt": "2026-06-13T17:25:21.964Z",
+      "updatedAt": "2026-06-13T17:25:21.964Z"
+    },
+    {
+      "_id": "137188b81ffddc2ccc57b71a",
+      "title": "Academic Excellence Award - Year 2",
+      "issuer": "University Board",
+      "issueDate": "Oct 2025",
+      "credentialId": "ACA-Y2",
+      "credentialUrl": "#",
+      "verificationLink": "#",
+      "badgeIcon": "Award",
+      "category": "Award",
+      "order": 3,
+      "createdAt": "2026-06-13T17:25:21.964Z",
+      "updatedAt": "2026-06-13T17:25:21.964Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "_id": "ce97bf4347290a2f1b04e342",
+      "name": "Sandun Perera",
+      "position": "Lead Backend Developer",
+      "company": "SysOps Solutions",
+      "content": "Gihan is an incredibly proactive intern. He picked up our Express REST architecture within his first week and optimized three critical database index lookup queries.",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+      "rating": 5,
+      "verified": true,
+      "createdAt": "2026-06-13T17:25:21.967Z",
+      "updatedAt": "2026-06-13T17:25:21.967Z"
+    },
+    {
+      "_id": "7f785ae86597b8c1368aa2c3",
+      "name": "Professor Amal Silva",
+      "position": "Department Chair (HCI)",
+      "company": "University Center",
+      "content": "In our Human Computer Interaction projects, Gihans commitment to designing accessible interfaces was unmatched. His software architectures are always clean and follow pattern best practices.",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+      "rating": 5,
+      "verified": true,
+      "createdAt": "2026-06-13T17:25:21.969Z",
+      "updatedAt": "2026-06-13T17:25:21.969Z"
+    }
+  ],
+  "analytics": [
+    {
+      "_id": "fbdfab9dbb489cb2c71a74af",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:37:33.855Z",
+      "updatedAt": "2026-06-13T17:37:33.855Z"
+    },
+    {
+      "_id": "42f023ec7b39c7f09760774f",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:37:33.861Z",
+      "updatedAt": "2026-06-13T17:37:33.861Z"
+    },
+    {
+      "_id": "3484403b3cf19fa1d9e94491",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:37:33.865Z",
+      "updatedAt": "2026-06-13T17:37:33.865Z"
+    },
+    {
+      "_id": "2ffe93f5f39ceadc5535d9d4",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:37:33.873Z",
+      "updatedAt": "2026-06-13T17:37:33.873Z"
+    },
+    {
+      "_id": "06923bd6b40e42292a4955e7",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:50:56.619Z",
+      "updatedAt": "2026-06-13T17:50:56.619Z"
+    },
+    {
+      "_id": "88c62c7e380a2eedfaf9dd8f",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:50:56.629Z",
+      "updatedAt": "2026-06-13T17:50:56.629Z"
+    },
+    {
+      "_id": "9d3465b2d28d980ae559c984",
+      "eventType": "pageview",
+      "path": "/blog",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:51:44.372Z",
+      "updatedAt": "2026-06-13T17:51:44.372Z"
+    },
+    {
+      "_id": "78432e0f03272d42b550bd41",
+      "eventType": "pageview",
+      "path": "/blog",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:51:44.380Z",
+      "updatedAt": "2026-06-13T17:51:44.380Z"
+    },
+    {
+      "_id": "d631344a60a1ee0045cef202",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:51:47.581Z",
+      "updatedAt": "2026-06-13T17:51:47.581Z"
+    },
+    {
+      "_id": "66048193afcbdd319f81c639",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:51:47.589Z",
+      "updatedAt": "2026-06-13T17:51:47.589Z"
+    },
+    {
+      "_id": "4fe1bbd829deca417db78e95",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:02.046Z",
+      "updatedAt": "2026-06-13T17:55:02.046Z"
+    },
+    {
+      "_id": "da17196eef6c3e371bf78dea",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:02.081Z",
+      "updatedAt": "2026-06-13T17:55:02.081Z"
+    },
+    {
+      "_id": "bf89af70a5df732796552a5e",
+      "eventType": "pageview",
+      "path": "/blog",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:13.317Z",
+      "updatedAt": "2026-06-13T17:55:13.317Z"
+    },
+    {
+      "_id": "6b8464035f37a8836b145b90",
+      "eventType": "pageview",
+      "path": "/blog",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:13.325Z",
+      "updatedAt": "2026-06-13T17:55:13.325Z"
+    },
+    {
+      "_id": "d4fff981a65d5c4bb6f1e7d1",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:14.758Z",
+      "updatedAt": "2026-06-13T17:55:14.758Z"
+    },
+    {
+      "_id": "8dd5f27c16544e10b81d9170",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T17:55:14.763Z",
+      "updatedAt": "2026-06-13T17:55:14.763Z"
+    },
+    {
+      "_id": "8acd273094dac99dc4248f7b",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T18:12:12.627Z",
+      "updatedAt": "2026-06-13T18:12:12.627Z"
+    },
+    {
+      "_id": "ddb0fbb61bcb29039d1be83d",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T18:12:12.636Z",
+      "updatedAt": "2026-06-13T18:12:12.636Z"
+    },
+    {
+      "_id": "875aaf4370cec8f996d13c2d",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T18:12:13.657Z",
+      "updatedAt": "2026-06-13T18:12:13.657Z"
+    },
+    {
+      "_id": "bea3fcdd78f3e6aeda7d720c",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T18:12:13.670Z",
+      "updatedAt": "2026-06-13T18:12:13.670Z"
+    },
+    {
+      "_id": "a34be57e89468df3603b482e",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:02:23.039Z",
+      "updatedAt": "2026-06-13T20:02:23.039Z"
+    },
+    {
+      "_id": "3dd373e70cd78abcb3338fff",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:02:23.084Z",
+      "updatedAt": "2026-06-13T20:02:23.084Z"
+    },
+    {
+      "_id": "a2140b8e810f3b13a7d9b7a8",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:02:46.321Z",
+      "updatedAt": "2026-06-13T20:02:46.321Z"
+    },
+    {
+      "_id": "716e19f650c324817c275b1b",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:02:46.329Z",
+      "updatedAt": "2026-06-13T20:02:46.329Z"
+    },
+    {
+      "_id": "7acdf9e1717180c15100e25d",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:05:39.288Z",
+      "updatedAt": "2026-06-13T20:05:39.288Z"
+    },
+    {
+      "_id": "ecd20bedee18dead02a0e733",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-13T20:05:39.292Z",
+      "updatedAt": "2026-06-13T20:05:39.292Z"
+    },
+    {
+      "_id": "b7d08adb1b381338d9df875c",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:46:54.697Z",
+      "updatedAt": "2026-06-17T14:46:54.697Z"
+    },
+    {
+      "_id": "703d1f4914ab571f698e3867",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:46:54.703Z",
+      "updatedAt": "2026-06-17T14:46:54.703Z"
+    },
+    {
+      "_id": "cd8b7ddcfd6ff118813ba253",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:47:27.632Z",
+      "updatedAt": "2026-06-17T14:47:27.632Z"
+    },
+    {
+      "_id": "aa7afc698b7bf54e03d5c535",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:47:27.635Z",
+      "updatedAt": "2026-06-17T14:47:27.635Z"
+    },
+    {
+      "_id": "b38b17c8177e0720ddab4596",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:48:05.966Z",
+      "updatedAt": "2026-06-17T14:48:05.966Z"
+    },
+    {
+      "_id": "183adb44e5a674abb13db8e0",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:48:53.797Z",
+      "updatedAt": "2026-06-17T14:48:53.797Z"
+    },
+    {
+      "_id": "ef8b9a3714e413219d90a936",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:48:53.801Z",
+      "updatedAt": "2026-06-17T14:48:53.801Z"
+    },
+    {
+      "_id": "7c177575986db3f52ea2fb81",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:49:11.184Z",
+      "updatedAt": "2026-06-17T14:49:11.184Z"
+    },
+    {
+      "_id": "373bd0ffb4e4a2746b631815",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T14:49:11.194Z",
+      "updatedAt": "2026-06-17T14:49:11.194Z"
+    },
+    {
+      "_id": "daef0074504cf0a163c04075",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:38.998Z",
+      "updatedAt": "2026-06-17T17:20:38.998Z"
+    },
+    {
+      "_id": "6efaf225733c4c400e44bc18",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:39.019Z",
+      "updatedAt": "2026-06-17T17:20:39.019Z"
+    },
+    {
+      "_id": "080f3bd6c8114211ced644f9",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:58.463Z",
+      "updatedAt": "2026-06-17T17:20:58.463Z"
+    },
+    {
+      "_id": "bc85e7aee904f2e11d2964c9",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:58.471Z",
+      "updatedAt": "2026-06-17T17:20:58.471Z"
+    },
+    {
+      "_id": "91cc8ce83fc19246054ea27a",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:59.685Z",
+      "updatedAt": "2026-06-17T17:20:59.685Z"
+    },
+    {
+      "_id": "040a4e6ba494615504509cc6",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:20:59.719Z",
+      "updatedAt": "2026-06-17T17:20:59.719Z"
+    },
+    {
+      "_id": "f889c83fc07118bef7da4614",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:27:43.153Z",
+      "updatedAt": "2026-06-17T17:27:43.153Z"
+    },
+    {
+      "_id": "1469793869d56477cb729161",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-17T17:27:43.173Z",
+      "updatedAt": "2026-06-17T17:27:43.173Z"
+    },
+    {
+      "_id": "0ab6cdf764bb65c4858e7d7d",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T06:23:36.086Z",
+      "updatedAt": "2026-06-18T06:23:36.086Z"
+    },
+    {
+      "_id": "f65c95de699182de07e5f5c9",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T06:23:36.101Z",
+      "updatedAt": "2026-06-18T06:23:36.101Z"
+    },
+    {
+      "_id": "bdc469f326de2c26e727a603",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T07:39:15.958Z",
+      "updatedAt": "2026-06-18T07:39:15.958Z"
+    },
+    {
+      "_id": "dc8addf5ad4b32b091cc7aec",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T07:39:15.987Z",
+      "updatedAt": "2026-06-18T07:39:15.987Z"
+    },
+    {
+      "_id": "e378243c7e5c3254e26336c2",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T07:54:53.257Z",
+      "updatedAt": "2026-06-18T07:54:53.257Z"
+    },
+    {
+      "_id": "2d02da6d5dec68b86a92ec2d",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T07:54:53.286Z",
+      "updatedAt": "2026-06-18T07:54:53.286Z"
+    },
+    {
+      "_id": "e9c43d78a571832a45052962",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T09:57:43.338Z",
+      "updatedAt": "2026-06-18T09:57:43.338Z"
+    },
+    {
+      "_id": "5485a9778d607bfcbb2c6976",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T09:57:43.365Z",
+      "updatedAt": "2026-06-18T09:57:43.365Z"
+    },
+    {
+      "_id": "ce05383b23e4e7ae86cd0526",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:06:42.123Z",
+      "updatedAt": "2026-06-18T13:06:42.123Z"
+    },
+    {
+      "_id": "cd2c1958f8a5061a79c2b029",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:06:42.149Z",
+      "updatedAt": "2026-06-18T13:06:42.149Z"
+    },
+    {
+      "_id": "39ae215e6816d4c5290b2c44",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:20:24.576Z",
+      "updatedAt": "2026-06-18T13:20:24.576Z"
+    },
+    {
+      "_id": "1f0428310325dafe0ba09d2f",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:20:24.581Z",
+      "updatedAt": "2026-06-18T13:20:24.581Z"
+    },
+    {
+      "_id": "b01c1a1f04752a471f0e0769",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:20:24.768Z",
+      "updatedAt": "2026-06-18T13:20:24.768Z"
+    },
+    {
+      "_id": "ddb6001e880c4b670a0e8042",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:20:24.782Z",
+      "updatedAt": "2026-06-18T13:20:24.782Z"
+    },
+    {
+      "_id": "31050412680c9e568ac2e0ce",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:25:08.374Z",
+      "updatedAt": "2026-06-18T13:25:08.374Z"
+    },
+    {
+      "_id": "7ef167770d93321cc08ef391",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T13:25:34.400Z",
+      "updatedAt": "2026-06-18T13:25:34.400Z"
+    },
+    {
+      "_id": "033118ad70bfbfcdc79dafa2",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:01.539Z",
+      "updatedAt": "2026-06-18T17:14:01.539Z"
+    },
+    {
+      "_id": "faf3f23714e3edfc5260cae0",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:01.560Z",
+      "updatedAt": "2026-06-18T17:14:01.560Z"
+    },
+    {
+      "_id": "6c06d23ebfad6da1e6c5a38f",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:01.755Z",
+      "updatedAt": "2026-06-18T17:14:01.755Z"
+    },
+    {
+      "_id": "8f0b2b0236c5550225f54db0",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:01.784Z",
+      "updatedAt": "2026-06-18T17:14:01.784Z"
+    },
+    {
+      "_id": "910cc53fe9f2823497adb54b",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:21.783Z",
+      "updatedAt": "2026-06-18T17:14:21.783Z"
+    },
+    {
+      "_id": "93b32237a6219ac1317c3934",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:21.788Z",
+      "updatedAt": "2026-06-18T17:14:21.788Z"
+    },
+    {
+      "_id": "a9e529afbda17933a0766e15",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:21.836Z",
+      "updatedAt": "2026-06-18T17:14:21.836Z"
+    },
+    {
+      "_id": "abf7ea078a2a3014fd34b9f4",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:14:21.856Z",
+      "updatedAt": "2026-06-18T17:14:21.856Z"
+    },
+    {
+      "_id": "d3e4f1c087447a9158f04877",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:16:18.116Z",
+      "updatedAt": "2026-06-18T17:16:18.116Z"
+    },
+    {
+      "_id": "0ff4363fac20b49f3f846809",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:16:18.123Z",
+      "updatedAt": "2026-06-18T17:16:18.123Z"
+    },
+    {
+      "_id": "f5e6752d6d0108c6038fe98b",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:48:42.931Z",
+      "updatedAt": "2026-06-18T17:48:42.931Z"
+    },
+    {
+      "_id": "c78eb608f0e16d85c8efc641",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:48:42.946Z",
+      "updatedAt": "2026-06-18T17:48:42.946Z"
+    },
+    {
+      "_id": "04ca0ab40e76d63090524f60",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:49:23.618Z",
+      "updatedAt": "2026-06-18T17:49:23.618Z"
+    },
+    {
+      "_id": "99c29a4b081cce6cdafc7d8b",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-18T17:49:23.629Z",
+      "updatedAt": "2026-06-18T17:49:23.629Z"
+    },
+    {
+      "_id": "7a6434be10642bd3f6192ccc",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T07:46:32.555Z",
+      "updatedAt": "2026-06-19T07:46:32.555Z"
+    },
+    {
+      "_id": "2f6ceb9caace9960c8f5739b",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T07:46:32.562Z",
+      "updatedAt": "2026-06-19T07:46:32.562Z"
+    },
+    {
+      "_id": "c5a6c903a6d34d89fb0afc15",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:26:19.690Z",
+      "updatedAt": "2026-06-19T08:26:19.690Z"
+    },
+    {
+      "_id": "5ca202b18e20e84fbd5af950",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:26:19.707Z",
+      "updatedAt": "2026-06-19T08:26:19.707Z"
+    },
+    {
+      "_id": "9ec91b0e6578ada711c7f93b",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:36:22.604Z",
+      "updatedAt": "2026-06-19T08:36:22.604Z"
+    },
+    {
+      "_id": "dcf316fc7eec138ec2fccc4c",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:36:22.620Z",
+      "updatedAt": "2026-06-19T08:36:22.620Z"
+    },
+    {
+      "_id": "a4de45ee8417de899d1511f5",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:36:23.142Z",
+      "updatedAt": "2026-06-19T08:36:23.142Z"
+    },
+    {
+      "_id": "283bcd88553d9a3be4af8117",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T08:36:23.152Z",
+      "updatedAt": "2026-06-19T08:36:23.152Z"
+    },
+    {
+      "_id": "4fc040f634a298a57352e483",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T09:40:08.995Z",
+      "updatedAt": "2026-06-19T09:40:08.995Z"
+    },
+    {
+      "_id": "8814039300fc55da586a1c91",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T09:40:09.017Z",
+      "updatedAt": "2026-06-19T09:40:09.017Z"
+    },
+    {
+      "_id": "7162439dd7d72bbacaae0153",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T10:06:08.191Z",
+      "updatedAt": "2026-06-19T10:06:08.191Z"
+    },
+    {
+      "_id": "fa10d07a2cdd1b268bb16e7c",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T10:06:08.207Z",
+      "updatedAt": "2026-06-19T10:06:08.207Z"
+    },
+    {
+      "_id": "82adc3843a8d59c1f470712c",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T10:30:07.954Z",
+      "updatedAt": "2026-06-19T10:30:07.954Z"
+    },
+    {
+      "_id": "3056696e3554b71d6bc03bf4",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T10:30:07.965Z",
+      "updatedAt": "2026-06-19T10:30:07.965Z"
+    },
+    {
+      "_id": "7197113df845ab4c9e1ae31a",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T12:35:09.368Z",
+      "updatedAt": "2026-06-19T12:35:09.368Z"
+    },
+    {
+      "_id": "8402110dfe1c3795623a6595",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-19T12:35:09.388Z",
+      "updatedAt": "2026-06-19T12:35:09.388Z"
+    },
+    {
+      "_id": "1ff490ae2dc39ec4629b7941",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:38.187Z",
+      "updatedAt": "2026-06-22T17:06:38.187Z"
+    },
+    {
+      "_id": "dc11d4cd61a8945b0b1f5d56",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:38.223Z",
+      "updatedAt": "2026-06-22T17:06:38.223Z"
+    },
+    {
+      "_id": "c3f36c7c6c0d9b9030c44969",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:39.382Z",
+      "updatedAt": "2026-06-22T17:06:39.382Z"
+    },
+    {
+      "_id": "d14b67ef8a7bb65a4bb196a3",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:39.395Z",
+      "updatedAt": "2026-06-22T17:06:39.395Z"
+    },
+    {
+      "_id": "7f59b517243ea726ba51f631",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:54.247Z",
+      "updatedAt": "2026-06-22T17:06:54.247Z"
+    },
+    {
+      "_id": "4081cb847015222ea75d0864",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T17:06:54.269Z",
+      "updatedAt": "2026-06-22T17:06:54.269Z"
+    },
+    {
+      "_id": "f7234b0497171cd20eb8edfc",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T18:40:28.306Z",
+      "updatedAt": "2026-06-22T18:40:28.306Z"
+    },
+    {
+      "_id": "a2b0ffca395d761a6fa80f1f",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-22T18:40:28.311Z",
+      "updatedAt": "2026-06-22T18:40:28.311Z"
+    },
+    {
+      "_id": "d7d76abd6a82c60266ad11e5",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:07.681Z",
+      "updatedAt": "2026-06-23T11:43:07.681Z"
+    },
+    {
+      "_id": "aac1f86d3f9487d7b60cbc57",
+      "eventType": "pageview",
+      "path": "/login",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:07.701Z",
+      "updatedAt": "2026-06-23T11:43:07.701Z"
+    },
+    {
+      "_id": "fb5a0c59f530fbc312de0f6f",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:08.109Z",
+      "updatedAt": "2026-06-23T11:43:08.109Z"
+    },
+    {
+      "_id": "6ee94f6f7805627052c8b0cd",
+      "eventType": "pageview",
+      "path": "/admin",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:08.120Z",
+      "updatedAt": "2026-06-23T11:43:08.120Z"
+    },
+    {
+      "_id": "1fc2c3f4a5e1c21be8848cce",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:12.117Z",
+      "updatedAt": "2026-06-23T11:43:12.117Z"
+    },
+    {
+      "_id": "27f11a770b9f7e153ac09c61",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T11:43:12.128Z",
+      "updatedAt": "2026-06-23T11:43:12.128Z"
+    },
+    {
+      "_id": "930ce6c913199274c09be2e4",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:05:20.003Z",
+      "updatedAt": "2026-06-23T16:05:20.003Z"
+    },
+    {
+      "_id": "2857d50a5303c4ac08625156",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:05:20.022Z",
+      "updatedAt": "2026-06-23T16:05:20.022Z"
+    },
+    {
+      "_id": "05abfba71d88e858dc52bddc",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:05:35.072Z",
+      "updatedAt": "2026-06-23T16:05:35.072Z"
+    },
+    {
+      "_id": "3e66467ccd2a646797eecbe6",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:05:35.080Z",
+      "updatedAt": "2026-06-23T16:05:35.080Z"
+    },
+    {
+      "_id": "d18a807bd52592696323f2a0",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:22:11.068Z",
+      "updatedAt": "2026-06-23T16:22:11.068Z"
+    },
+    {
+      "_id": "86bc8f81395f6bbd15e809c5",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:22:11.073Z",
+      "updatedAt": "2026-06-23T16:22:11.073Z"
+    },
+    {
+      "_id": "2b4bbdd685da48f9a7c5c9e9",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:42:44.038Z",
+      "updatedAt": "2026-06-23T16:42:44.038Z"
+    },
+    {
+      "_id": "9fd1235c5ce4e1ed1a3da9b9",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T16:42:44.055Z",
+      "updatedAt": "2026-06-23T16:42:44.055Z"
+    },
+    {
+      "_id": "d0c31db46bc92d3574141b4a",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T19:03:10.815Z",
+      "updatedAt": "2026-06-23T19:03:10.815Z"
+    },
+    {
+      "_id": "17728a79115428a338202d8f",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T19:03:10.829Z",
+      "updatedAt": "2026-06-23T19:03:10.829Z"
+    },
+    {
+      "_id": "4450c47cd13dc9b40a26c578",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T21:12:12.067Z",
+      "updatedAt": "2026-06-23T21:12:12.067Z"
+    },
+    {
+      "_id": "0a3ed300058e78ad23771451",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-23T21:12:12.082Z",
+      "updatedAt": "2026-06-23T21:12:12.082Z"
+    },
+    {
+      "_id": "4d3dd45c6263b3c1c5bd080f",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-24T00:58:43.140Z",
+      "updatedAt": "2026-06-24T00:58:43.140Z"
+    },
+    {
+      "_id": "fbbdc20a096974e2ebafedd8",
+      "eventType": "pageview",
+      "path": "/",
+      "referrer": "http://localhost:5173/",
+      "browser": "Chrome",
+      "os": "Windows",
+      "ipHash": "eff8e7ca506627fe",
+      "createdAt": "2026-06-24T00:58:43.157Z",
+      "updatedAt": "2026-06-24T00:58:43.157Z"
+    }
+  ],
+  "settings": {
+    "siteName": "Gihan Suminda - Brand Platform",
+    "theme": "dark",
+    "seoKeywords": "Gihan Suminda, Software Engineer, Portfolio, Full Stack Intern",
+    "seoDescription": "Personal brand ecosystem and portfolio of Gihan Suminda, Software Engineering Undergraduate."
+  }
+}
