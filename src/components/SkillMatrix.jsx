@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
-import { Layers, Cpu, Server, Database, Code, CheckCircle } from 'lucide-react';
+import { Layers, Cpu, Server, Database, Code } from 'lucide-react';
 
 const SkillMatrix = () => {
   const [skills, setSkills] = useState([]);
@@ -23,10 +23,6 @@ const SkillMatrix = () => {
 
   const categories = ['All', 'Frontend', 'Backend', 'Database', 'Tools', 'Academic Subject'];
 
-  const filteredSkills = filter === 'All' 
-    ? skills 
-    : skills.filter(s => s.category === filter);
-
   // Group icons dynamically
   const getCategoryIcon = (cat) => {
     switch (cat) {
@@ -38,16 +34,9 @@ const SkillMatrix = () => {
     }
   };
 
-  // Coordinates for the SVG Radar Chart
-  // Points: Frontend(90), Backend(85), Databases(80), Tools(85), Academic(82), Architecture(80)
-  const radarPoints = [
-    { name: 'Frontend', val: 90, x: 200, y: 30 },
-    { name: 'Backend', val: 85, x: 345, y: 115 },
-    { name: 'Databases', val: 80, x: 310, y: 265 },
-    { name: 'Tools', val: 85, x: 90, y: 265 },
-    { name: 'Academic', val: 82, x: 55, y: 115 },
-    { name: 'QA / PM', val: 80, x: 200, y: 100 }
-  ];
+  const filteredSkills = filter === 'All' 
+    ? skills 
+    : skills.filter(s => s.category === filter);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>

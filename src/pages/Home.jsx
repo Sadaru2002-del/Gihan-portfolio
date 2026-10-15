@@ -6,7 +6,7 @@ import JourneyTimeline from '../components/JourneyTimeline';
 import SkillMatrix from '../components/SkillMatrix';
 import ProjectCard from '../components/ProjectCard';
 import RecruiterPanel from '../components/RecruiterPanel';
-import { ArrowRight, Mail, Phone, MapPin, Send, Github, Linkedin, Award, Star, CheckCircle, Flame } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Send, Github, Linkedin, Star, CheckCircle, Flame, Download } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
   const [contactResponse, setContactResponse] = useState(null);
 
   // GitHub / Statistics metrics (Simulated live APIs)
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     commits: 486,
     repositories: 24,
     stars: 42,
@@ -60,7 +60,7 @@ const Home = () => {
 
     setContactLoading(true);
     try {
-      const res = await api.sendMessage(contactData);
+      await api.sendMessage(contactData);
       
       // Burst confetti
       confetti({
@@ -124,18 +124,38 @@ const Home = () => {
             
             {/* Left side info */}
             <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
+                <img
+                  src="/gihan_avatar.jpg"
+                  alt="Gihan Suminda"
+                  style={{
+                    width: '84px',
+                    height: '84px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '3px solid var(--color-primary)',
+                    boxShadow: '0 0 24px rgba(168, 85, 247, 0.45)',
+                    flexShrink: 0
+                  }}
+                />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <span className="badge badge-primary badge-pulse" style={{ fontSize: '0.75rem', padding: '5px 14px', width: 'fit-content' }}>
+                    ⚡ Full-Stack Developer (Intern) @ Fuchsius Pvt Ltd
+                  </span>
+                  <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
+                    BSc (Hons) in Software Engineering (3rd Year) · Saegis Campus
+                  </div>
+                </div>
+              </div>
+
               <div>
-                <span className="badge badge-primary badge-pulse" style={{ marginBottom: '16px', fontSize: '0.75rem', padding: '6px 16px' }}>
-                  ⚡ Open to full-time opportunities
-                </span>
-                
                 <h1 className="display-medium" style={{ fontFamily: 'var(--font-display)', fontWeight: 800 }}>
-                  Architecting <br />
-                  <span className="gradient-text">Scalable Solutions</span>
+                  Gihan Suminda <br />
+                  <span className="gradient-text">Undergraduate Software Engineer</span>
                 </h1>
                 
-                <p className="body-large" style={{ fontSize: '1.25rem', marginTop: '16px', maxWidth: '580px', lineHeight: '1.7' }}>
-                  Hello, I am **Gihan Suminda**, a Software Engineering Undergraduate & Full Stack Development Intern specializing in MERN architectures, secure API layers, and HCI pattern compliance.
+                <p className="body-large" style={{ fontSize: '1.15rem', marginTop: '16px', maxWidth: '580px', lineHeight: '1.7' }}>
+                  Passionate software engineer focused on building efficient, scalable, and user-centric solutions. Skilled in clean code, full-stack web development (MERN Stack), and delivering seamless digital experiences.
                 </p>
               </div>
 
@@ -184,6 +204,23 @@ const Home = () => {
                 >
                   Explore Showcase <ArrowRight size={16} />
                 </button>
+                <a
+                  href="/Gihan_Suminda_CV.pdf"
+                  download="Gihan_Suminda_CV.pdf"
+                  className="secondary-btn"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+                >
+                  <Download size={16} /> Download CV
+                </a>
+                <a
+                  href="https://github.com/Sadaru2002-del"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="secondary-btn"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+                >
+                  <Github size={16} /> GitHub Profile
+                </a>
                 <button
                   onClick={() => {
                     const el = document.querySelector('#recruiter');
@@ -370,38 +407,50 @@ const Home = () => {
                 </p>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyPosition: 'center', color: 'var(--color-primary)', justifyContent: 'center' }}>
+                  <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', color: 'var(--color-primary)', justifyContent: 'center' }}>
                     <Mail size={18} />
                   </div>
                   <div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)', fontWeight: 600 }}>EMAIL ADDRESS</div>
-                    <a href="mailto:gihansuminda@gmail.com" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
-                      gihansuminda@gmail.com
+                    <a href="mailto:slsadaru2002@gmail.com" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
+                      slsadaru2002@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyPosition: 'center', color: 'var(--color-secondary)', justifyContent: 'center' }}>
+                  <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', color: '#10b981', justifyContent: 'center' }}>
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)', fontWeight: 600 }}>PHONE NUMBER</div>
+                    <a href="tel:+94761708864" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
+                      +94 761708864
+                    </a>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', color: 'var(--color-secondary)', justifyContent: 'center' }}>
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)', fontWeight: 600 }}>LOCATION</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)', fontWeight: 600 }}>ADDRESS / RESIDENCE</div>
                     <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
-                      Colombo, Sri Lanka (Available globally)
+                      364/B, Wathukarakanda, Megoda Waleboda, Balangoda, Sri Lanka
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Social Channels */}
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <a href="https://github.com/GihanSuminda" target="_blank" rel="noreferrer" className="secondary-btn" style={{ padding: '10px 14px', borderRadius: '8px' }}>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <a href="https://github.com/Sadaru2002-del" target="_blank" rel="noreferrer" className="secondary-btn" style={{ padding: '10px 14px', borderRadius: '8px' }}>
                   <Github size={18} /> GitHub
                 </a>
-                <a href="https://linkedin.com/in/gihan-suminda" target="_blank" rel="noreferrer" className="secondary-btn" style={{ padding: '10px 14px', borderRadius: '8px' }}>
+                <a href="https://linkedin.com/in/gihan-suminda-a55330321" target="_blank" rel="noreferrer" className="secondary-btn" style={{ padding: '10px 14px', borderRadius: '8px' }}>
                   <Linkedin size={18} /> LinkedIn
                 </a>
               </div>

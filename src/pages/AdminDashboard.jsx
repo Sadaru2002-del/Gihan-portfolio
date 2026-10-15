@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
+import FileUpload from '../components/FileUpload';
+import { isSupabaseConfigured } from '../supabase';
 import {
   BarChart2,
   MessageSquare,
@@ -12,16 +14,18 @@ import {
   Check,
   Trash2,
   Edit3,
-  Plus,
   ArrowLeft,
   Cpu,
-  Layers,
-  Globe,
   Activity,
   User,
   Menu,
   X,
-  Eye
+  Eye,
+  Database,
+  Copy,
+  ExternalLink,
+  FolderPlus,
+  Sparkles
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -36,7 +40,9 @@ const AdminDashboard = () => {
     siteName: '',
     theme: 'dark',
     seoKeywords: '',
-    seoDescription: ''
+    seoDescription: '',
+    avatarUrl: '',
+    resumeUrl: ''
   });
   
   const [loading, setLoading] = useState(true);
@@ -51,6 +57,7 @@ const AdminDashboard = () => {
     technologies: '',
     githubLink: '',
     liveLink: '',
+    imageUrl: '',
     status: 'Completed',
     linesOfCode: 0,
     testCoverage: 0,
@@ -58,6 +65,30 @@ const AdminDashboard = () => {
     architectureDiagram: ''
   });
   const [editingProjectId, setEditingProjectId] = useState(null);
+  const [copiedProjectLink, setCopiedProjectLink] = useState(false);
+  const [copiedCloudLink, setCopiedCloudLink] = useState(false);
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const projectSubmissionUrl = `${window.location.origin}${window.location.pathname}#/submit-project`;
+  const aiCloudInstructionsUrl = 'https://quaattpwaoqojzlvpbaz.supabase.co/storage/v1/object/public/portfolio/api/ai-instructions.md';
+
+  const handleCopyProjectLink = () => {
+    navigator.clipboard.writeText(projectSubmissionUrl);
+    setCopiedProjectLink(true);
+    setTimeout(() => setCopiedProjectLink(false), 2500);
+  };
+
+  const handleCopyCloudLink = () => {
+    navigator.clipboard.writeText(aiCloudInstructionsUrl);
+    setCopiedCloudLink(true);
+    setTimeout(() => setCopiedCloudLink(false), 2500);
+  };
+
+  const handleCopyPrompt = () => {
+    const promptText = `Please add this project to my portfolio using this cloud instruction link: ${aiCloudInstructionsUrl}\n\nProject Link / Details: [PASTE YOUR GITHUB OR PROJECT LINK HERE]`;
+    navigator.clipboard.writeText(promptText);
+    setCopiedPrompt(true);
+    setTimeout(() => setCopiedPrompt(false), 2500);
+  };
 
   // Form states - Blogs
   const [blogForm, setBlogForm] = useState({
@@ -65,6 +96,7 @@ const AdminDashboard = () => {
     category: 'Software Development',
     summary: '',
     content: '',
+    coverImage: '',
     tags: '',
     status: 'Published'
   });
@@ -83,42 +115,6 @@ const AdminDashboard = () => {
   const [editingSkillId, setEditingSkillId] = useState(null);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    api.logPageView('/admin');
-
-    const token = localStorage.getItem('gihan_auth_token');
-    if (!token) {
-      navigate('/login');
-      return;
-    }
-
-    loadAllData();
-  }, [navigate]);
-
-  const loadAllData = async () => {
-    setLoading(true);
-    try {
-      await Promise.all([
-        fetchStats(),
-        fetchMessages(),
-        fetchProjects(),
-        fetchBlogs(),
-        fetchSkills(),
-        fetchSettings()
-      ]);
-    } catch (e) {
-      console.error("Error loading dashboard data", e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('gihan_auth_token');
-    localStorage.removeItem('gihan_user');
-    navigate('/login');
-  };
 
   const fetchStats = async () => {
     try {
@@ -176,6 +172,43 @@ const AdminDashboard = () => {
     }
   };
 
+  const loadAllData = async () => {
+    setLoading(true);
+    try {
+      await Promise.all([
+        fetchStats(),
+        fetchMessages(),
+        fetchProjects(),
+        fetchBlogs(),
+        fetchSkills(),
+        fetchSettings()
+      ]);
+    } catch (e) {
+      console.error("Error loading dashboard data", e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('gihan_auth_token');
+    localStorage.removeItem('gihan_user');
+    navigate('/login');
+  };
+
+  useEffect(() => {
+    api.logPageView('/admin');
+
+    const token = localStorage.getItem('gihan_auth_token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    loadAllData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
+
   // Message Actions
   const handleMarkMessageRead = async (id, currentStatus) => {
     try {
@@ -224,6 +257,7 @@ const AdminDashboard = () => {
         technologies: '',
         githubLink: '',
         liveLink: '',
+        imageUrl: '',
         status: 'Completed',
         linesOfCode: 0,
         testCoverage: 0,
@@ -248,6 +282,7 @@ const AdminDashboard = () => {
       technologies: proj.technologies ? proj.technologies.join(', ') : '',
       githubLink: proj.githubLink || '',
       liveLink: proj.liveLink || '',
+      imageUrl: proj.imageUrl || '',
       status: proj.status || 'Completed',
       linesOfCode: proj.codeMetrics?.linesOfCode || 0,
       testCoverage: proj.codeMetrics?.testCoverage || 0,
@@ -283,7 +318,7 @@ const AdminDashboard = () => {
         await api.createBlog(formattedData);
         alert('Blog published successfully!');
       }
-      setBlogForm({ title: '', category: 'Software Development', summary: '', content: '', tags: '', status: 'Published' });
+      setBlogForm({ title: '', category: 'Software Development', summary: '', content: '', coverImage: '', tags: '', status: 'Published' });
       setEditingBlogId(null);
       fetchBlogs();
       fetchStats();
@@ -299,6 +334,7 @@ const AdminDashboard = () => {
       category: blog.category || 'Software Development',
       summary: blog.summary || '',
       content: blog.content || '',
+      coverImage: blog.coverImage || '',
       tags: blog.tags ? blog.tags.join(', ') : '',
       status: blog.status || 'Published'
     });
@@ -421,8 +457,18 @@ const AdminDashboard = () => {
               <User size={20} style={{ color: '#fff' }} />
             </div>
             <div>
-              <div style={styles.adminName}>Gihan Suminda</div>
-              <div style={styles.adminRole}>Chief Architect</div>
+              <div style={styles.adminName}>{siteSettings.siteName || 'Portfolio Admin'}</div>
+              <div style={styles.adminRole}>
+                {isSupabaseConfigured() ? (
+                  <span style={{ color: 'var(--success)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.72rem' }}>
+                    <Database size={11} /> Supabase Cloud
+                  </span>
+                ) : (
+                  <span style={{ color: 'var(--warning)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.72rem' }}>
+                    <Database size={11} /> Local Storage
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 
@@ -647,8 +693,132 @@ const AdminDashboard = () => {
               {activeTab === 'projects' && (
                 <div style={styles.tabSection}>
                   <div style={styles.sectionHeader}>
-                    <h3 style={styles.sectionTitle}>Showcase Projects</h3>
-                    <p style={styles.sectionSubtitle}>Add, edit, or remove entries in your professional showcase</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', width: '100%' }}>
+                      <div>
+                        <h3 style={styles.sectionTitle}>Showcase Projects Manager</h3>
+                        <p style={styles.sectionSubtitle}>Add, edit, or remove entries in your professional showcase</p>
+                      </div>
+                      <a
+                        href="#/submit-project"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="premium-btn"
+                        style={{
+                          textDecoration: 'none',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          padding: '10px 18px',
+                          fontSize: '0.85rem'
+                        }}
+                      >
+                        <FolderPlus size={16} />
+                        <span>Open Project Form Page</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Dedicated AI Cloud Link & Project Entry Banner */}
+                  <div style={styles.submissionLinkCard}>
+                    {/* Cloud AI Direct Ingestion Link (For Any AI Chat / No Localhost) */}
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                      <div style={styles.submissionLinkIcon}>
+                        <Sparkles size={22} color="#c084fc" />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                          <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>
+                            🤖 AI Cloud Direct Project Injection Link
+                          </h4>
+                          <span style={styles.submissionBadge}>
+                            Permanent Cloud URL (No Localhost)
+                          </span>
+                        </div>
+                        <p style={{ margin: '6px 0 0 0', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                          මෙම <strong>Permanent Cloud Link</strong> එක ඕනෑම AI Chat එකකට (Antigravity, ChatGPT, Claude) ලබා දී, <em>"මේ link එකෙන් මගේ portfolio එකට මේ project එක add කරන්න"</em> යැයි පැවසූ විට, ඔබේ කිසිදු මැදිහත්වීමකින් තොරව AI මගින් සෘජුවම Project එක Database එකට Insert කරනු ඇත:
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Cloud AI Link Row */}
+                    <div style={styles.submissionLinkRow}>
+                      <div style={styles.submissionLinkBox}>
+                        <span style={styles.submissionLinkText}>{aiCloudInstructionsUrl}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleCopyCloudLink}
+                        style={styles.copyLinkBtn}
+                        title="Copy AI Cloud Link"
+                      >
+                        {copiedCloudLink ? (
+                          <>
+                            <Check size={16} color="#10b981" />
+                            <span style={{ color: '#10b981', fontWeight: 600 }}>Cloud Link Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={16} />
+                            <span>Copy AI Cloud Link</span>
+                          </>
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleCopyPrompt}
+                        style={styles.copyPromptBtn}
+                        title="Copy ready-to-paste AI Prompt"
+                      >
+                        {copiedPrompt ? (
+                          <>
+                            <Check size={16} color="#10b981" />
+                            <span style={{ color: '#10b981', fontWeight: 600 }}>Prompt Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Sparkles size={16} color="#c084fc" />
+                            <span>Copy AI Prompt</span>
+                          </>
+                        )}
+                      </button>
+                      <a
+                        href={aiCloudInstructionsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={styles.openFormBtn}
+                        title="View Cloud AI Instruction Spec"
+                      >
+                        <ExternalLink size={16} />
+                        <span>View Cloud Spec</span>
+                      </a>
+                    </div>
+
+                    {/* Secondary helper: Standalone web entry form link */}
+                    <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
+                      <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                        🌐 අතින් විස්තර පුරවා submit කිරීමට අවශ්‍ය නම් Web Form එක භාවිතා කරන්න:
+                      </span>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          type="button"
+                          onClick={handleCopyProjectLink}
+                          style={{ ...styles.copyLinkBtn, padding: '6px 12px', fontSize: '0.75rem' }}
+                        >
+                          {copiedProjectLink ? <Check size={14} color="#10b981" /> : <Copy size={14} />}
+                          <span>{copiedProjectLink ? 'Form Link Copied!' : 'Copy Form Link'}</span>
+                        </button>
+                        <a
+                          href="#/submit-project"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ ...styles.openFormBtn, padding: '6px 12px', fontSize: '0.75rem' }}
+                        >
+                          <ExternalLink size={14} />
+                          <span>Open Web Form</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
                   <div style={styles.twoColumnLayout}>
@@ -800,6 +970,15 @@ const AdminDashboard = () => {
                           />
                         </div>
 
+                        <div style={styles.formGroup}>
+                          <FileUpload
+                            label="Project Screenshot / Media (Supabase Storage)"
+                            folder="projects"
+                            currentUrl={projectForm.imageUrl}
+                            onUploadSuccess={(url) => setProjectForm(prev => ({ ...prev, imageUrl: url }))}
+                          />
+                        </div>
+
                         <div style={styles.formActionRow}>
                           <button type="submit" className="premium-btn" style={{ flex: 1, justifyContent: 'center' }}>
                             {editingProjectId ? 'Update Project' : 'Publish Project'}
@@ -935,6 +1114,15 @@ const AdminDashboard = () => {
                             placeholder="Short summary"
                             style={styles.formInput}
                             required
+                          />
+                        </div>
+
+                        <div style={styles.formGroup}>
+                          <FileUpload
+                            label="Blog Cover Banner (Supabase Storage)"
+                            folder="blogs"
+                            currentUrl={blogForm.coverImage}
+                            onUploadSuccess={(url) => setBlogForm(prev => ({ ...prev, coverImage: url }))}
                           />
                         </div>
 
@@ -1222,6 +1410,51 @@ const AdminDashboard = () => {
                             placeholder="Description..."
                             style={{ ...styles.formTextarea, minHeight: '100px' }}
                           />
+                        </div>
+
+                        {/* Supabase Storage Media Uploads */}
+                        <div style={{ ...styles.formGroup, borderTop: '1px solid var(--border-color)', paddingTop: '20px', marginTop: '12px' }}>
+                          <FileUpload
+                            label="Profile Avatar Photo (Supabase Storage)"
+                            folder="avatars"
+                            currentUrl={siteSettings.avatarUrl}
+                            onUploadSuccess={(url) => setSiteSettings(prev => ({ ...prev, avatarUrl: url }))}
+                          />
+                        </div>
+
+                        <div style={styles.formGroup}>
+                          <FileUpload
+                            label="Active Resume File (PDF / DOCX)"
+                            folder="resumes"
+                            accept=".pdf,.doc,.docx"
+                            currentUrl={siteSettings.resumeUrl}
+                            onUploadSuccess={(url) => setSiteSettings(prev => ({ ...prev, resumeUrl: url }))}
+                            helperText="Upload your official resume for recruiter instant downloads (PDF/DOCX max 5MB)"
+                          />
+                        </div>
+
+                        {/* Supabase Cloud Connection Overview */}
+                        <div
+                          style={{
+                            padding: '16px',
+                            borderRadius: '12px',
+                            background: isSupabaseConfigured() ? 'rgba(16, 185, 129, 0.08)' : 'rgba(245, 158, 11, 0.08)',
+                            border: `1px solid ${isSupabaseConfigured() ? 'rgba(16, 185, 129, 0.25)' : 'rgba(245, 158, 11, 0.25)'}`,
+                            margin: '12px 0 20px 0',
+                            textAlign: 'left'
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                            <Database size={18} style={{ color: isSupabaseConfigured() ? 'var(--success)' : 'var(--warning)' }} />
+                            <strong style={{ fontSize: '0.9rem', color: isSupabaseConfigured() ? 'var(--success)' : 'var(--warning)' }}>
+                              {isSupabaseConfigured() ? 'Supabase Database & Cloud Storage Active' : 'Supabase Cloud Configuration'}
+                            </strong>
+                          </div>
+                          <p style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
+                            {isSupabaseConfigured()
+                              ? 'Your portfolio is connected to your Supabase PostgreSQL database and Storage bucket. Data and uploaded files are synced live to the cloud.'
+                              : 'To connect to your cloud database & storage, open the .env file in the project root and add your VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY. Run the provided supabase-schema.sql script in your Supabase SQL editor.'}
+                          </p>
                         </div>
 
                         <button type="submit" className="premium-btn" style={{ justifyContent: 'center', marginTop: '10px' }}>
@@ -1915,6 +2148,103 @@ const styles = {
     height: '10px',
     borderRadius: '50%',
     display: 'inline-block'
+  },
+  submissionLinkCard: {
+    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%)',
+    border: '1px solid rgba(168, 85, 247, 0.3)',
+    borderRadius: '16px',
+    padding: '20px 24px',
+    marginBottom: '24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)'
+  },
+  submissionLinkIcon: {
+    width: '42px',
+    height: '42px',
+    borderRadius: '12px',
+    background: 'rgba(168, 85, 247, 0.2)',
+    border: '1px solid rgba(168, 85, 247, 0.4)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0
+  },
+  submissionBadge: {
+    fontSize: '0.7rem',
+    background: 'rgba(16, 185, 129, 0.15)',
+    color: '#34d399',
+    padding: '3px 10px',
+    borderRadius: '20px',
+    fontWeight: 600,
+    border: '1px solid rgba(16, 185, 129, 0.3)'
+  },
+  submissionLinkRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    flexWrap: 'wrap'
+  },
+  submissionLinkBox: {
+    flex: 1,
+    minWidth: '260px',
+    background: 'rgba(0, 0, 0, 0.4)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: '10px',
+    padding: '10px 14px',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
+  },
+  submissionLinkText: {
+    fontFamily: 'var(--font-mono, monospace)',
+    fontSize: '0.85rem',
+    color: '#e2e8f0',
+    userSelect: 'all'
+  },
+  copyLinkBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    background: 'rgba(255, 255, 255, 0.08)',
+    border: '1px solid rgba(255, 255, 255, 0.18)',
+    color: '#ffffff',
+    padding: '10px 18px',
+    borderRadius: '10px',
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    cursor: 'pointer',
+    transition: 'all 0.2s'
+  },
+  copyPromptBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    background: 'rgba(168, 85, 247, 0.15)',
+    border: '1px solid rgba(168, 85, 247, 0.4)',
+    color: '#f3e8ff',
+    padding: '10px 18px',
+    borderRadius: '10px',
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    cursor: 'pointer',
+    transition: 'all 0.2s'
+  },
+  openFormBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    background: 'rgba(168, 85, 247, 0.25)',
+    border: '1px solid rgba(168, 85, 247, 0.5)',
+    color: '#f3e8ff',
+    padding: '10px 18px',
+    borderRadius: '10px',
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    textDecoration: 'none',
+    cursor: 'pointer',
+    transition: 'all 0.2s'
   }
 };
 

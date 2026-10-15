@@ -180,8 +180,37 @@ CMD ["node", "server/server.js"]
 
 ---
 
-## 🛠️ Maintenance & Contribution
+## ⚡ Supabase Database & Cloud Storage Setup
 
-*   **Adding Skills:** Can be added via the administrative REST endpoints or seeded via `server/scripts/seed.js` using corresponding SVG icons.
-*   **Updating Resume:** Modify Gihan's downloadable text parameters inside `downloadMockResume()` in `src/components/RecruiterPanel.jsx`.
-*   **Theme tweaks:** Modify CSS variables in `src/index.css` inside `body` or `body.light-mode`.
+This portfolio is powered by **Supabase** for PostgreSQL database operations and Cloud Storage (images, screenshots, resumes).
+
+### 1. Create a Supabase Project
+1. Go to [https://supabase.com](https://supabase.com) and create a free project.
+2. In your Supabase Dashboard, navigate to **Project Settings** -> **API**.
+3. Copy your **Project URL** and **anon public key**.
+
+### 2. Configure Environment Variables
+Create or open the `.env` file in the root folder and add your Supabase details:
+```env
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-public-key
+VITE_SUPABASE_STORAGE_BUCKET=portfolio
+```
+
+### 3. Run Database Migrations & Storage Script
+1. In your Supabase Dashboard, go to **SQL Editor**.
+2. Open the file `supabase-schema.sql` located in this repository.
+3. Paste the contents into the SQL Editor and click **Run**.
+4. This will automatically:
+   - Create all tables: `projects`, `blogs`, `blog_comments`, `skills`, `certificates`, `testimonials`, `messages`, `analytics`, `settings`
+   - Create the public Storage bucket named `portfolio`
+   - Apply Row Level Security (RLS) policies for secure reading and uploads
+   - Populate default showcase data!
+
+### 4. Cloud Storage Uploads
+Inside the **Admin Dashboard** (`/admin`), you can now upload:
+- Project screenshots and cover photos
+- Blog banners and article media
+- Profile avatars and resumes (PDF/DOCX)
+All uploaded media will be safely stored and served via Supabase's high-speed CDN!
+

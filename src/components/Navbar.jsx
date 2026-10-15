@@ -1,36 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, ArrowUpRight, Lock, Shield } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowUpRight, Lock, Shield, Github } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(() => localStorage.getItem('gihan_theme') === 'light');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [adminClickCount, setAdminClickCount] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
+  const isLoggedIn = !!localStorage.getItem('gihan_auth_token');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    const savedTheme = localStorage.getItem('gihan_theme');
-    if (savedTheme === 'light') {
-      setIsLightMode(true);
+    if (localStorage.getItem('gihan_theme') === 'light') {
       document.body.classList.add('light-mode');
     }
-    const token = localStorage.getItem('gihan_auth_token');
-    setIsLoggedIn(!!token);
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Re-check login state on route change
-  useEffect(() => {
-    const token = localStorage.getItem('gihan_auth_token');
-    setIsLoggedIn(!!token);
-  }, [location]);
 
   const toggleTheme = () => {
     const newMode = !isLightMode;
@@ -73,7 +63,7 @@ const Navbar = () => {
   }, [location]);
 
   // Triple-click brand logo = go to admin login (easter egg)
-  const handleBrandClick = (e) => {
+  const handleBrandClick = () => {
     const newCount = adminClickCount + 1;
     setAdminClickCount(newCount);
     if (newCount >= 3) {
@@ -117,7 +107,7 @@ const Navbar = () => {
             background: 'linear-gradient(135deg, var(--color-text-primary), var(--color-text-secondary))',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
           }}>
-            Gihan Suminda
+            Gihan Portfolio
           </span>
           <span className="badge badge-success badge-pulse" style={{ padding: '3px 8px', fontSize: '0.65rem' }}>
             Available
@@ -142,6 +132,23 @@ const Navbar = () => {
 
         {/* Right Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+
+          {/* GitHub Profile */}
+          <a
+            href="https://github.com/Sadaru2002-del"
+            target="_blank"
+            rel="noreferrer"
+            title="GitHub Profile (Sadaru2002-del)"
+            style={{
+              background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-color)',
+              borderRadius: '8px', width: '38px', height: '38px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', color: 'var(--color-text-secondary)', transition: 'all 0.2s',
+              textDecoration: 'none'
+            }}
+          >
+            <Github size={17} />
+          </a>
 
           {/* Theme Toggle */}
           <button
@@ -241,6 +248,16 @@ const Navbar = () => {
           >
             📝 Blog
           </Link>
+
+          <a
+            href="https://github.com/Sadaru2002-del"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setIsMenuOpen(false)}
+            style={{ ...mobileNavButtonStyle, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <Github size={16} /> GitHub Profile
+          </a>
 
           {/* Mobile admin link */}
           <div style={{ borderTop: '1px solid var(--border-color)', marginTop: '12px', paddingTop: '12px' }}>

@@ -31,21 +31,21 @@ const AIAssistant = () => {
 
     // Advanced token matching engine
     if (lowercaseText.includes('intern') || lowercaseText.includes('work') || lowercaseText.includes('experience') || lowercaseText.includes('position')) {
-      reply = 'Gihan is currently a Full Stack Development Intern. In this role, he develops and maintains end-to-end features, builds REST APIs with Express.js, designs database schemas in MongoDB/MySQL, and constructs reactive frontends. He is highly focused on optimization and secure systems.';
+      reply = 'Gihan is currently a Full-Stack Developer (Intern) at Fuchsius Pvt Ltd, Colombo (Apr 2026 - Present). He develops web applications using the MERN Stack (MongoDB, Express.js, React.js, Node.js), with hands-on expertise in frontend/backend development, database management, and API integration. He also completed an intensive 1-Month MERN Stack Mentorship at Fuchsius Pvt Ltd.';
     } else if (lowercaseText.includes('backend') || lowercaseText.includes('node') || lowercaseText.includes('express') || lowercaseText.includes('api')) {
-      reply = 'For backend services, Gihan leverages Node.js with Express.js. He is experienced in writing modular REST endpoints, integrating JWT auth tokens, applying express-rate-limit protection, and structuring schemas using Mongoose/MySQL.';
-    } else if (lowercaseText.includes('project') || lowercaseText.includes('featured') || lowercaseText.includes('lumina') || lowercaseText.includes('showcase')) {
-      reply = 'Gihan has completed several impressive projects, notably:\n1. **Lumina Dining Platform**: Restaurant reservation, ordering, and admin analytics control room.\n2. **Cognitive Task Grid**: AI-powered task estimation and sprint manager.\nYou can explore interactive cards, architecture diagrams, and source code links in the **Project Showcase** section above.';
-    } else if (lowercaseText.includes('academic') || lowercaseText.includes('course') || lowercaseText.includes('university') || lowercaseText.includes('study') || lowercaseText.includes('subject')) {
-      reply = 'Gihan is a Software Engineering Undergraduate. His coursework covers: Human Computer Interaction (HCI), Software Architecture, Design Patterns, Software Quality Assurance (SQA), Software Project Management, Logic Programming, and Artificial Intelligence.';
-    } else if (lowercaseText.includes('frontend') || lowercaseText.includes('react') || lowercaseText.includes('css') || lowercaseText.includes('tailwind')) {
-      reply = 'On the frontend, Gihan is proficient in HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS, and Bootstrap. He focuses on responsive layouts, fast page loads (Lighthouse scores), and premium transitions.';
-    } else if (lowercaseText.includes('contact') || lowercaseText.includes('email') || lowercaseText.includes('schedule') || lowercaseText.includes('interview')) {
-      reply = 'You can contact Gihan directly by filling out the form in the **Contact Center** at the bottom of the page, or by using the quick interview request tool inside the **Recruiter Portal** (which instantly drafts an invitation email). You can also email him at gihansuminda@gmail.com.';
+      reply = 'For backend systems, Gihan specializes in Node.js and Express.js with the MERN Stack. He builds RESTful APIs, designs Mongoose ODM schemas, performs database seeding, and implements secure database access with MongoDB, SQLite, and Supabase.';
+    } else if (lowercaseText.includes('project') || lowercaseText.includes('featured') || lowercaseText.includes('showcase')) {
+      reply = 'Gihan\'s key projects include:\n1. **Life Resilience App**: Life management app with AI Coach, mood tracking, money management, and Firebase authentication.\n2. **3D Portfolio Website**: Interactive 3D graphics (Three.js), i18n, Firebase backend, Recharts, and PWA capabilities.\n3. **Lumina Dining — Restaurant App**: Full-stack restaurant platform with RESTful API, SQLite, and glassmorphism UI.\n4. **Library System Admin Panel**: Mongoose ODM dashboard, database seeding, and REST API routes.\n5. **E-Commerce Clothing Store**: Full store with cart, checkout, wishlist, and admin control panel.';
+    } else if (lowercaseText.includes('academic') || lowercaseText.includes('course') || lowercaseText.includes('university') || lowercaseText.includes('study') || lowercaseText.includes('education') || lowercaseText.includes('campus')) {
+      reply = 'Gihan is currently studying for his BSc (Hons) in Software Engineering at Saegis Campus, Nugegoda (3rd Year, Nov 2023 - Present). Prior to this, he completed his G.C.E. Advanced Level at Sri Dharmananda Vidyayathana Piriwana, Balangoda (2021 - 2022).';
+    } else if (lowercaseText.includes('frontend') || lowercaseText.includes('react') || lowercaseText.includes('three') || lowercaseText.includes('css')) {
+      reply = 'On the frontend, Gihan is proficient in React.js, JavaScript (ES6+), HTML5, CSS3, Three.js (3D graphics), Progressive Web Apps (PWA), and responsive UI design with clean code and high usability.';
+    } else if (lowercaseText.includes('contact') || lowercaseText.includes('email') || lowercaseText.includes('phone') || lowercaseText.includes('schedule') || lowercaseText.includes('interview')) {
+      reply = 'You can reach Gihan directly at:\n- **Email**: slsadaru2002@gmail.com\n- **Phone**: +94 761708864\n- **Address**: 364/B, Wathukarakanda, Megoda Waleboda, Balangoda\n- **LinkedIn**: linkedin.com/in/gihan-suminda-a55330321\nYou can also use the Contact Form or Recruiter Portal on this page.';
     } else if (lowercaseText.includes('skills') || lowercaseText.includes('languages') || lowercaseText.includes('database')) {
-      reply = 'Gihan\'s toolbelt includes: React, HTML/CSS, Tailwind, Node.js, Express, MongoDB, MySQL, Git/GitHub, Postman, and Figma. Check out the **Skill Matrix** section above for progress heatmaps and radar charts.';
+      reply = 'Gihan\'s core skills from his resume include: Problem Solving (90%), Programming (85%), Full-Stack Development (80%), Teamwork (95%), Communication (95%), and Usability Testing (75%). Technologies: React.js, Node.js, Express.js, MongoDB, Firebase, Three.js, SQLite, HTML/CSS, and Git/GitHub.';
     } else {
-      reply = 'Gihan has trained me to share details about his skills, internship experience, projects, and university coursework. Let me know if you would like me to summarize any of these areas!';
+      reply = 'I am Gihan\'s AI Assistant. I can tell you all about his MERN Stack development at Fuchsius Pvt Ltd, his BSc in Software Engineering at Saegis Campus, his 5 featured software projects, or his contact information. How can I help?';
     }
 
     setTimeout(() => {

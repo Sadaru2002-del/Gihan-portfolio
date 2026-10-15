@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 const Terminal = () => {
   const [history, setHistory] = useState([
-    { type: 'output', text: 'Welcome to Gihan Suminda\'s Personal Brand OS v1.0.0.' },
+    { type: 'output', text: 'Welcome to Gihan Portfolio OS v1.0.0.' },
     { type: 'output', text: 'Type "help" to see a list of available commands.' },
     { type: 'output', text: '' }
   ]);
@@ -14,6 +14,7 @@ const Terminal = () => {
     about: 'Display Gihan\'s professional background.',
     skills: 'Show technical skills matrix.',
     projects: 'View details of showcased systems.',
+    github: 'Open Gihan\'s GitHub profile in a new tab.',
     neofetch: 'Show developer system specs & ASCII logo.',
     contact: 'Get details to reach out or book meetings.',
     clear: 'Clear terminal screen.'
@@ -31,38 +32,47 @@ const Terminal = () => {
         });
         break;
       case 'about':
-        response.push({ type: 'output', text: 'Gihan Suminda - Software Engineering Undergraduate' });
-        response.push({ type: 'output', text: 'Current Position: Full Stack Development Intern' });
-        response.push({ type: 'output', text: 'Career Goal: Senior Software Engineer' });
-        response.push({ type: 'output', text: 'Academic Focus: Software Architecture, AI, HCI, Design Patterns.' });
+        response.push({ type: 'output', text: 'Gihan Suminda - Undergraduate Software Engineer' });
+        response.push({ type: 'output', text: 'Degree:   BSc (Hons) in Software Engineering (3rd Year) @ Saegis Campus' });
+        response.push({ type: 'output', text: 'Role:     Full-Stack Developer (Intern) @ Fuchsius Pvt Ltd, Colombo' });
+        response.push({ type: 'output', text: 'Profile:  Building efficient, scalable, and user-centric solutions in clean code & MERN.' });
         break;
       case 'skills':
-        response.push({ type: 'output', text: 'Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS, Bootstrap' });
-        response.push({ type: 'output', text: 'Backend:  Node.js, Express.js' });
-        response.push({ type: 'output', text: 'Database: MongoDB, MySQL' });
-        response.push({ type: 'output', text: 'Tools:    Git, GitHub, VS Code, Postman, Figma' });
+        response.push({ type: 'output', text: 'Core:      Problem Solving (90%), Programming (85%), Full-Stack (80%), Teamwork (95%)' });
+        response.push({ type: 'output', text: 'Frontend:  React.js, JavaScript (ES6+), Three.js, HTML5, CSS3, PWA' });
+        response.push({ type: 'output', text: 'Backend:   Node.js, Express.js, MERN Stack, RESTful APIs' });
+        response.push({ type: 'output', text: 'Databases: MongoDB, Firebase, SQLite, Supabase' });
+        response.push({ type: 'output', text: 'Languages: English (80%), Sinhala (100%)' });
         break;
       case 'projects':
-        response.push({ type: 'output', text: 'Featured Work:' });
-        response.push({ type: 'output', text: '  1. Lumina Dining Platform - Restaurant digital reservation & billing ecosystem' });
-        response.push({ type: 'output', text: '  2. Cognitive Task Grid    - AI task estimation & Agile squad workflow tool' });
-        response.push({ type: 'output', text: 'Type "github" to open codebase repositories.' });
+        response.push({ type: 'output', text: 'Gihan\'s Software Projects:' });
+        response.push({ type: 'output', text: '  1. Life Resilience App       - Life management app with AI Coach, mood tracking, Firebase' });
+        response.push({ type: 'output', text: '  2. 3D Portfolio Website      - 3D graphics (Three.js), i18n, PWA, Recharts' });
+        response.push({ type: 'output', text: '  3. Lumina Dining             - Full-stack restaurant platform, RESTful API, SQLite' });
+        response.push({ type: 'output', text: '  4. Library System Admin      - Mongoose ODM dashboard, database seeding, REST routes' });
+        response.push({ type: 'output', text: '  5. E-Commerce Clothing Store - Online store with admin panel, cart & checkout' });
+        break;
+      case 'github':
+        window.open('https://github.com/Sadaru2002-del', '_blank');
+        response.push({ type: 'output', text: 'Opening GitHub profile: https://github.com/Sadaru2002-del' });
         break;
       case 'neofetch':
         response.push({ type: 'output', text: ' gihan@brand-os' });
         response.push({ type: 'output', text: ' -------------' });
         response.push({ type: 'output', text: ' OS:       GihanSumindaOS x86_64' });
-        response.push({ type: 'output', text: ' Academic: BSc (Hons) in Software Engineering Undergrad' });
-        response.push({ type: 'output', text: ' Shell:    antigravity-sh v3.5' });
-        response.push({ type: 'output', text: ' Editor:   VS Code' });
-        response.push({ type: 'output', text: ' Dev Stack:React, Node.js, Express, MongoDB' });
-        response.push({ type: 'output', text: ' Status:   Available for full-time junior positions / contract work' });
+        response.push({ type: 'output', text: ' Academic: Saegis Campus - BSc (Hons) Software Engineering (3rd Year)' });
+        response.push({ type: 'output', text: ' Intern:   Fuchsius Pvt Ltd, Colombo' });
+        response.push({ type: 'output', text: ' Dev Stack:MongoDB, Express.js, React.js, Node.js (MERN)' });
+        response.push({ type: 'output', text: ' GitHub:   github.com/Sadaru2002-del' });
+        response.push({ type: 'output', text: ' Status:   Undergraduate Software Engineer' });
         break;
       case 'contact':
         response.push({ type: 'output', text: 'Reach out through any channels below:' });
-        response.push({ type: 'output', text: '  Email:    gihansuminda@gmail.com' });
-        response.push({ type: 'output', text: '  GitHub:   github.com/GihanSuminda' });
-        response.push({ type: 'output', text: '  LinkedIn: linkedin.com/in/gihan-suminda' });
+        response.push({ type: 'output', text: '  Email:    slsadaru2002@gmail.com' });
+        response.push({ type: 'output', text: '  Phone:    +94 761708864' });
+        response.push({ type: 'output', text: '  Address:  364/B, Wathukarakanda, Megoda Waleboda, Balangoda' });
+        response.push({ type: 'output', text: '  LinkedIn: https://linkedin.com/in/gihan-suminda-a55330321' });
+        response.push({ type: 'output', text: '  GitHub:   https://github.com/Sadaru2002-del' });
         break;
       case 'clear':
         setHistory([]);

@@ -6,52 +6,52 @@ const JourneyTimeline = () => {
 
   const steps = [
     {
-      title: 'School Grounding',
-      period: '2018 - 2020',
+      title: 'Advanced Level (A/L)',
+      period: '2021 - 2022',
       icon: BookOpen,
-      subtitle: 'Advanced Level Physical Science',
-      description: 'Built a strong foundation in Mathematics, Physics, and analytical logic. Developed a passion for computing and computational algorithms.',
-      skills: ['Logic', 'Analytical Thinking', 'Problem Solving']
+      subtitle: 'Sri Dharmananda Vidyayathana Piriwana, Balangoda',
+      description: 'Completed G.C.E. Advanced Level with strong analytical discipline, problem solving, and computational curiosity.',
+      skills: ['Problem Solving', 'Analytical Logic', 'Academic Excellence']
     },
     {
-      title: 'University Admission',
-      period: '2021 - Present',
+      title: 'Undergraduate Degree',
+      period: 'Nov 2023 - Present',
       icon: GraduationCap,
-      subtitle: 'BSc (Hons) in Software Engineering Undergrad',
-      description: 'Mastered core theories including Software Architecture, Design Patterns, Human Computer Interaction (HCI), Logic Programming, and SQA.',
-      skills: ['Software Architecture', 'Design Patterns', 'HCI', 'AI Foundations']
+      subtitle: 'BSc (Hons) in Software Engineering (3rd Year) · Saegis Campus',
+      description: 'Undergraduate at Saegis Campus, Nugegoda. Mastered clean code, software development, full-stack web architectures, and usability testing.',
+      skills: ['Software Engineering', 'Full-Stack Development', 'Usability Testing', 'Clean Architecture']
     },
     {
-      title: 'Self-Guided Learning',
-      period: '2023 - 2024',
+      title: 'MERN Mentorship',
+      period: 'Apr - May 2026',
       icon: Code,
-      subtitle: 'MERN Stack Specialization',
-      description: 'Completed boot camps and developed proficiency in React.js, Node.js, Express, MongoDB, and modern layouts using Tailwind CSS/CSS modules.',
-      skills: ['React.js', 'Node.js', 'MongoDB', 'Postman', 'Figma']
+      subtitle: '1-Month MERN Stack Mentorship · Fuchsius Pvt Ltd, Colombo',
+      description: 'Completed rigorous industry mentorship in MERN Stack (MongoDB, Express.js, React.js, Node.js), API integration, and database architecture.',
+      skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'API Integration']
     },
     {
-      title: 'Project Development',
-      period: '2024 - 2025',
-      icon: Server,
-      subtitle: 'Building Enterprise Scaled Apps',
-      description: 'Architected booking systems and analytics engines (e.g. Lumina Dining, Cognitive Task Grid) to put structural design patterns into practice.',
-      skills: ['REST APIs', 'JWT Security', 'Mongoose Schemas', 'SVG Architecture']
-    },
-    {
-      title: 'Internship Stage',
-      period: '2025 - Present',
+      title: 'Industry Internship',
+      period: 'Apr 2026 - Present',
       icon: Heart,
-      subtitle: 'Full Stack Development Intern',
-      description: 'Currently working in a professional team environment. Designing database optimizations, implementing security filters, and building dashboards.',
-      skills: ['Production Express', 'Query Optimization', 'Team Agile Git', 'Sanitization']
+      subtitle: 'Full-Stack Developer (Intern) · Fuchsius Pvt Ltd, Colombo',
+      description: 'Developing web applications using the MERN Stack. Hands-on experience in frontend/backend engineering, database management, and third-party API integration.',
+      skills: ['MERN Stack', 'Frontend Engineering', 'Backend API', 'Database Management', 'Teamwork']
     },
     {
-      title: 'Future Roadmap',
-      period: '2026+',
+      title: 'Project Portfolio',
+      period: '2024 - Present',
+      icon: Server,
+      subtitle: 'User-Centric Web Applications',
+      description: 'Engineered Life Resilience App (AI Coach & Firebase), 3D Portfolio (Three.js & PWA), Lumina Dining (Express & SQLite), Library System Admin Panel, and E-Commerce Clothing Store.',
+      skills: ['React', 'Firebase', 'Three.js', 'MongoDB', 'Express', 'SQLite']
+    },
+    {
+      title: 'Future Vision',
+      period: 'Career Goal',
       icon: Compass,
-      subtitle: 'Senior Software Engineer Goal',
-      description: 'Striving to lead large-scale architectural designs, integrate advanced AI workflows into SaaS products, and build cloud-native applications.',
-      skills: ['System Design', 'Cloud Architecture (AWS)', 'Kubernetes', 'CI/CD']
+      subtitle: 'Undergraduate Software Engineer',
+      description: 'Focused on building efficient, scalable, and user-centric solutions. Skilled in clean code, full-stack web development, and delivering seamless digital experiences.',
+      skills: ['Scalable Systems', 'User-Centric Design', 'Clean Code', 'Adaptability']
     }
   ];
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
-import { Download, Calendar, Mail, CheckCircle, Award, Target, Star } from 'lucide-react';
+import { Download, Calendar, CheckCircle, Award, Target, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const RecruiterPanel = () => {
@@ -14,6 +14,19 @@ const RecruiterPanel = () => {
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [resumeUrl, setResumeUrl] = useState('');
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const settings = await api.getSettings();
+        if (settings?.resumeUrl) {
+          setResumeUrl(settings.resumeUrl);
+        }
+      } catch (e) {}
+    };
+    fetchSettings();
+  }, []);
 
   const strengths = [
     { title: 'Pattern-Driven Architecture', desc: 'Designs software based on sound architecture patterns and quality practices.' },
@@ -51,48 +64,22 @@ const RecruiterPanel = () => {
 
       setSuccess(true);
       setFormData({ name: '', company: '', email: '', date: '', type: 'Technical Interview', message: '' });
-    } catch (err) {
-      alert('Error sending request. Please email directly at gihansuminda@gmail.com.');
+    } catch (_err) {
+      alert('Error sending request. Please email directly at slsadaru2002@gmail.com.');
     } finally {
       setLoading(false);
     }
   };
 
   const downloadMockResume = () => {
-    // Standard resume download action - print bio to pdf, or simulate a beautiful file download.
-    // For portfolio demo, we create a text file download with Gihan Suminda's Resume details dynamically!
-    // This is 100% working and recruiter-ready!
-    const resumeText = `
-GIHAN SUMINDA
-Software Engineering Undergraduate & Full Stack Development Intern
-Email: gihansuminda@gmail.com | GitHub: github.com/GihanSuminda
-
-CAREER GOAL:
-Become a Senior Software Engineer delivering patterns-compliant, scalable cloud infrastructures.
-
-CORE SKILLS:
-- Frontend: HTML5, CSS3, JavaScript, React.js, Tailwind CSS, Bootstrap
-- Backend: Node.js, Express.js
-- Databases: MongoDB, MySQL
-- Academic Subjects: Software Architecture, Design Patterns, HCI, SQA, AI.
-
-EXPERIENCE:
-Full Stack Development Intern
-- Developed REST API routing, secure JWT middleware, and database index lookups.
-- Constructed administrative dashboards in React, integrating analytics logs.
-
-ACADEMIC QUALIFICATIONS:
-BSc (Hons) in Software Engineering Undergraduate
-    `;
-    const blob = new Blob([resumeText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
+    const targetUrl = resumeUrl || '/Gihan_Suminda_CV.pdf';
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Gihan_Suminda_Resume.txt';
+    a.href = targetUrl;
+    a.download = 'Gihan_Suminda_CV.pdf';
+    a.target = '_blank';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   return (

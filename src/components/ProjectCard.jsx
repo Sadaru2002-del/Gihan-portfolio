@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
-import { Search, Github, ExternalLink, Activity, ShieldAlert, Cpu, Layers } from 'lucide-react';
+import { Search, Github, ExternalLink, Activity, ShieldAlert } from 'lucide-react';
 
 const ProjectCard = () => {
   const [projects, setProjects] = useState([]);
@@ -123,6 +123,11 @@ const ProjectCard = () => {
                 <h3 className="h3" style={{ marginBottom: '8px', fontFamily: 'var(--font-display)', fontWeight: 700 }}>
                   {project.title}
                 </h3>
+                {project.imageUrl && (
+                  <div style={{ marginBottom: '14px', borderRadius: '10px', overflow: 'hidden', maxHeight: '180px', border: '1px solid var(--border-color)' }}>
+                    <img src={project.imageUrl} alt={project.title} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
+                  </div>
+                )}
                 <p className="body-medium" style={{ fontSize: '0.9rem', marginBottom: '16px', lineHeight: '1.6' }}>
                   {project.description}
                 </p>
@@ -263,6 +268,12 @@ const ProjectCard = () => {
                 </a>
               )}
             </div>
+
+            {selectedProject.imageUrl && (
+              <div style={{ marginBottom: '24px', borderRadius: '12px', overflow: 'hidden', maxHeight: '320px', border: '1px solid var(--border-color)' }}>
+                <img src={selectedProject.imageUrl} alt={selectedProject.title} style={{ width: '100%', height: 'auto', maxHeight: '320px', objectFit: 'cover' }} />
+              </div>
+            )}
 
             {/* Metrics Panel */}
             <div

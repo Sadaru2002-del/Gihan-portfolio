@@ -6,24 +6,28 @@ import Home from './pages/Home';
 import Blog from './pages/Blog';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
+import ProjectSubmit from './pages/ProjectSubmit';
 
 const AppContent = () => {
   const location = useLocation();
-  const isAdminOrLogin = location.pathname.startsWith('/admin') || location.pathname.startsWith('/login');
+  const isDedicatedPage = location.pathname.startsWith('/admin') ||
+    location.pathname.startsWith('/login') ||
+    location.pathname.startsWith('/submit-project');
 
   return (
     <>
       {/* Conditionally render header and chat agent based on route */}
-      {!isAdminOrLogin && <Navbar />}
+      {!isDedicatedPage && <Navbar />}
       
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/submit-project" element={<ProjectSubmit />} />
       </Routes>
 
-      {!isAdminOrLogin && <AIAssistant />}
+      {!isDedicatedPage && <AIAssistant />}
     </>
   );
 };

@@ -10,13 +10,6 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [commentLoading, setCommentLoading] = useState(false);
 
-  useEffect(() => {
-    // Log analytics hit
-    api.logPageView('/blog');
-    
-    fetchBlogs();
-  }, []);
-
   const fetchBlogs = async () => {
     try {
       const data = await api.getBlogs();
@@ -27,6 +20,13 @@ const Blog = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // Log analytics hit
+    api.logPageView('/blog');
+    
+    fetchBlogs();
+  }, []);
 
   const handleLike = async (id, e) => {
     e.stopPropagation();
@@ -179,6 +179,12 @@ const Blog = () => {
               </div>
             </div>
 
+            {selectedBlog.coverImage && (
+              <div style={{ marginBottom: '28px', borderRadius: '12px', overflow: 'hidden', maxHeight: '360px', border: '1px solid var(--border-color)' }}>
+                <img src={selectedBlog.coverImage} alt={selectedBlog.title} style={{ width: '100%', height: 'auto', maxHeight: '360px', objectFit: 'cover' }} />
+              </div>
+            )}
+
             {/* Markdown Content Section */}
             <article style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '32px', marginBottom: '32px' }}>
               {renderMarkdown(selectedBlog.content)}
@@ -319,6 +325,11 @@ const Blog = () => {
                     <h3 className="h3" style={{ fontFamily: 'var(--font-display)', fontWeight: 700, margin: '4px 0 0 0' }}>
                       {blog.title}
                     </h3>
+                    {blog.coverImage && (
+                      <div style={{ margin: '8px 0', borderRadius: '10px', overflow: 'hidden', maxHeight: '160px', border: '1px solid var(--border-color)' }}>
+                        <img src={blog.coverImage} alt={blog.title} style={{ width: '100%', height: '160px', objectFit: 'cover' }} />
+                      </div>
+                    )}
                     <p className="body-medium" style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
                       {blog.summary}
                     </p>
