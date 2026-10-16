@@ -848,10 +848,14 @@ const AdminDashboard = () => {
                               onChange={(e) => setProjectForm({ ...projectForm, category: e.target.value })}
                               style={styles.formSelect}
                             >
+                              <option>Full Stack</option>
                               <option>Web App</option>
-                              <option>AI / ML</option>
-                              <option>System Utility</option>
+                              <option>Frontend</option>
+                              <option>Backend</option>
                               <option>Mobile App</option>
+                              <option>AI / ML</option>
+                              <option>Cloud / DevOps</option>
+                              <option>System Utility</option>
                               <option>Open Source</option>
                             </select>
                           </div>
