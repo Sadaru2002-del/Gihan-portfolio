@@ -23,7 +23,8 @@ const ProjectCard = () => {
     fetchProjects();
   }, []);
 
-  const categories = ['All', 'Web App', 'AI / ML', 'System Utility', 'Open Source'];
+  const dynamicCategories = ['All', ...Array.from(new Set(projects.map(p => p.category).filter(Boolean)))];
+  const categories = dynamicCategories.length > 1 ? dynamicCategories : ['All', 'Full Stack', 'Frontend', 'Backend', 'Web App', 'AI / ML'];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(search.toLowerCase()) ||

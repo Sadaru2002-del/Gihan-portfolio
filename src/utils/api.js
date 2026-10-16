@@ -31,7 +31,7 @@ const initialSeedData = {
       longDescription: 'An interactive portfolio featuring 3D graphics powered by Three.js, internationalization (i18n) support, Firebase backend integration, responsive data visualisations with Recharts, and Progressive Web App (PWA) offline capabilities.',
       category: 'Frontend',
       technologies: ['React', 'Three.js', 'PWA', 'Recharts', 'Firebase'],
-      githubLink: 'https://github.com/Sadaru2002-del/yashika-portfolio',
+      githubLink: 'https://github.com/Sadaru2002-del/Gihan-portfolio',
       liveLink: 'http://localhost:5173/',
       imageUrl: '',
       status: 'Completed',

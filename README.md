@@ -22,7 +22,7 @@ This platform acts as a complete brand dashboard, including traffic analytics tr
 ## 📁 Repository Folder Structure
 
 ```
-yashika portfolio/
+Gihan-portfolio/
 ├── package.json         # Vite frontend configuration & scripts
 ├── vite.config.js       # Vite bundler parameters
 ├── index.html           # Master HTML wrapper with SEO metadata
@@ -90,7 +90,7 @@ yashika portfolio/
 
 1.  **Clone / open the workspace directory:**
     ```bash
-    cd "yashika portfolio"
+    cd "Gihan-portfolio"
     ```
 2.  **Install client dependencies:**
     ```bash
