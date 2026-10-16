@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { UploadCloud, CheckCircle, X, AlertCircle, Loader, Image as ImageIcon } from 'lucide-react';
-import { uploadToSupabaseStorage, isSupabaseConfigured } from '../supabase';
+import React, { useState, useRef, useEffect } from 'react';
+import { UploadCloud, CheckCircle, AlertCircle, Loader, Image as ImageIcon, Trash2, ExternalLink } from 'lucide-react';
+import { uploadToSupabaseStorage, deleteFromSupabaseStorage, isSupabaseConfigured } from '../supabase';
 
 const FileUpload = ({
   label = 'Upload Image/File',
@@ -9,13 +9,22 @@ const FileUpload = ({
   onUploadSuccess,
   accept = 'image/*',
   maxSizeMB = 5,
-  helperText = 'Supported formats: PNG, JPG, WEBP, SVG, PDF (Max 5MB)'
+  helperText = 'Supported formats: PNG, JPG, WEBP, SVG, PDF (Max 5MB)',
+  deleteFromStorage = true
 }) => {
   const [uploading, setUploading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
   const [previewUrl, setPreviewUrl] = useState(currentUrl || '');
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
+
+  // Synchronize internal preview when external currentUrl changes (e.g. editing a project or resetting)
+  useEffect(() => {
+    setPreviewUrl(currentUrl || '');
+    setError('');
+  }, [currentUrl]);
 
   const handleFile = async (file) => {
     if (!file) return;
@@ -27,6 +36,7 @@ const FileUpload = ({
     }
 
     setError('');
+    setNotice('');
     setUploading(true);
 
     try {
@@ -35,6 +45,8 @@ const FileUpload = ({
       if (onUploadSuccess) {
         onUploadSuccess(result.publicUrl, result.path);
       }
+      setNotice('✓ Photo uploaded successfully!');
+      setTimeout(() => setNotice(''), 4000);
     } catch (err) {
       setError(err.message || 'Error uploading file to storage.');
     } finally {
@@ -50,12 +62,32 @@ const FileUpload = ({
     }
   };
 
-  const handleClear = () => {
-    setPreviewUrl('');
+  const handleClear = async (e) => {
+    if (e) e.stopPropagation();
+    const urlToDelete = previewUrl;
+
+    if (window.confirm ? !window.confirm('Are you sure you want to remove this photo?') : false) {
+      return;
+    }
+
+    setDeleting(true);
     setError('');
-    if (fileInputRef.current) fileInputRef.current.value = '';
-    if (onUploadSuccess) {
-      onUploadSuccess('', '');
+
+    try {
+      if (deleteFromStorage && urlToDelete && isSupabaseConfigured()) {
+        await deleteFromSupabaseStorage(urlToDelete);
+      }
+    } catch (err) {
+      console.warn('Storage delete notice:', err);
+    } finally {
+      setDeleting(false);
+      setPreviewUrl('');
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      if (onUploadSuccess) {
+        onUploadSuccess('', '');
+      }
+      setNotice('✓ Photo removed. Remember to click "Update Project" / "Save" to apply changes.');
+      setTimeout(() => setNotice(''), 6000);
     }
   };
 
@@ -80,13 +112,15 @@ const FileUpload = ({
         <div
           style={{
             position: 'relative',
-            padding: '12px',
-            borderRadius: '10px',
+            padding: '12px 14px',
+            borderRadius: '12px',
             background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid var(--border-color)',
+            border: '1px solid rgba(168, 85, 247, 0.25)',
             display: 'flex',
             alignItems: 'center',
-            gap: '12px'
+            gap: '12px',
+            flexWrap: 'wrap',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
           }}
         >
           {isImage(previewUrl) ? (
@@ -94,8 +128,8 @@ const FileUpload = ({
               src={previewUrl}
               alt="Preview"
               style={{
-                width: '64px',
-                height: '64px',
+                width: '68px',
+                height: '68px',
                 borderRadius: '8px',
                 objectFit: 'cover',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -105,8 +139,8 @@ const FileUpload = ({
           ) : (
             <div
               style={{
-                width: '64px',
-                height: '64px',
+                width: '68px',
+                height: '68px',
                 borderRadius: '8px',
                 background: 'rgba(168, 85, 247, 0.1)',
                 display: 'flex',
@@ -115,13 +149,13 @@ const FileUpload = ({
                 color: 'var(--color-primary)'
               }}
             >
-              <ImageIcon size={28} />
+              <ImageIcon size={30} />
             </div>
           )}
 
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-              <CheckCircle size={14} style={{ color: 'var(--success)' }} /> File Attached
+          <div style={{ flex: 1, minWidth: '180px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+              <CheckCircle size={15} style={{ color: 'var(--success)' }} /> Photo Attached
             </div>
             <div
               style={{
@@ -131,7 +165,8 @@ const FileUpload = ({
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 fontFamily: 'var(--font-mono)',
-                marginTop: '4px'
+                marginTop: '4px',
+                maxWidth: '280px'
               }}
               title={previewUrl}
             >
@@ -139,26 +174,65 @@ const FileUpload = ({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={handleClear}
-            style={{
-              background: 'rgba(239, 68, 68, 0.1)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              color: 'var(--danger)',
-              width: '32px',
-              height: '32px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              flexShrink: 0
-            }}
-            title="Remove file"
-          >
-            <X size={16} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {previewUrl.startsWith('http') && (
+              <a
+                href={previewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--color-text-secondary)',
+                  padding: '6px 10px',
+                  borderRadius: '6px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  fontSize: '0.75rem',
+                  textDecoration: 'none',
+                  fontWeight: 500
+                }}
+                title="Open full photo in new tab"
+              >
+                <ExternalLink size={13} />
+                <span>View</span>
+              </a>
+            )}
+
+            <button
+              type="button"
+              onClick={handleClear}
+              disabled={deleting}
+              style={{
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.35)',
+                color: '#ef4444',
+                padding: '6px 12px',
+                borderRadius: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                cursor: deleting ? 'not-allowed' : 'pointer',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                transition: 'all 0.2s ease'
+              }}
+              title="Delete this photo from project"
+            >
+              {deleting ? (
+                <>
+                  <Loader size={13} className="spinner" />
+                  <span>Deleting...</span>
+                </>
+              ) : (
+                <>
+                  <Trash2 size={14} />
+                  <span>Delete Photo</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       ) : (
         <div
@@ -212,13 +286,19 @@ const FileUpload = ({
                 <UploadCloud size={20} />
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--color-text-primary)', fontWeight: 600 }}>
-                Click to browse or drag & drop file here
+                Click to browse or drag & drop photo here
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary)' }}>
                 {helperText}
               </div>
             </>
           )}
+        </div>
+      )}
+
+      {notice && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10b981', fontSize: '0.78rem', marginTop: '2px', fontWeight: 500 }}>
+          <CheckCircle size={14} /> {notice}
         </div>
       )}
 

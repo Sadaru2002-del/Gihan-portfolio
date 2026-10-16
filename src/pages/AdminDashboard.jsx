@@ -980,6 +980,7 @@ const AdminDashboard = () => {
                             folder="projects"
                             currentUrl={projectForm.imageUrl}
                             onUploadSuccess={(url) => setProjectForm(prev => ({ ...prev, imageUrl: url }))}
+                            deleteFromStorage={true}
                           />
                         </div>
 
@@ -1000,6 +1001,7 @@ const AdminDashboard = () => {
                                   technologies: '',
                                   githubLink: '',
                                   liveLink: '',
+                                  imageUrl: '',
                                   status: 'Completed',
                                   linesOfCode: 0,
                                   testCoverage: 0,

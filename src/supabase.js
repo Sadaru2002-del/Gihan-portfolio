@@ -111,18 +111,34 @@ export const uploadToSupabaseStorage = async (file, folder = 'uploads', bucket =
 };
 
 /**
- * Delete a file from Supabase Storage
+ * Delete a file from Supabase Storage (supports relative path or full Supabase public URL)
  */
-export const deleteFromSupabaseStorage = async (filePath, bucket = storageBucket) => {
-  if (!isSupabaseConfigured() || !filePath || filePath.startsWith('http') || filePath.startsWith('blob:')) {
+export const deleteFromSupabaseStorage = async (filePathOrUrl, bucket = storageBucket) => {
+  if (!isSupabaseConfigured() || !filePathOrUrl || filePathOrUrl.startsWith('blob:')) {
     return { success: true };
   }
 
   try {
-    const client = supabaseAdmin || supabase;
-    const { error } = await client.storage.from(bucket).remove([filePath]);
-    if (error) throw error;
-    return { success: true };
+    let cleanPath = filePathOrUrl;
+    // If a full Supabase URL was passed
+    if (filePathOrUrl.includes(`/storage/v1/object/public/${bucket}/`)) {
+      cleanPath = filePathOrUrl.split(`/storage/v1/object/public/${bucket}/`)[1];
+    } else if (filePathOrUrl.includes('/storage/v1/object/public/')) {
+      const parts = filePathOrUrl.split('/storage/v1/object/public/')[1].split('/');
+      parts.shift(); // remove bucket name
+      cleanPath = parts.join('/');
+    } else if (filePathOrUrl.startsWith('http://') || filePathOrUrl.startsWith('https://')) {
+      // External image from Unsplash, Imgur, etc.
+      return { success: true };
+    }
+
+    const client = (serviceRoleKey && supabaseAdmin) ? supabaseAdmin : (supabaseAdmin || supabase);
+    const { error } = await client.storage.from(bucket).remove([cleanPath]);
+    if (error) {
+      console.warn('Supabase storage remove notice:', error.message);
+      return { success: false, error: error.message };
+    }
+    return { success: true, path: cleanPath };
   } catch (error) {
     console.error('❌ Supabase storage delete error:', error);
     return { success: false, error: error.message };
