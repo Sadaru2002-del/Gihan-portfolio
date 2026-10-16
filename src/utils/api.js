@@ -33,7 +33,7 @@ const initialSeedData = {
       technologies: ['React', 'Three.js', 'PWA', 'Recharts', 'Firebase'],
       githubLink: 'https://github.com/Sadaru2002-del/Gihan-portfolio',
       liveLink: 'http://localhost:5173/',
-      imageUrl: '',
+      imageUrl: 'https://quaattpwaoqojzlvpbaz.supabase.co/storage/v1/object/public/portfolio/projects/1792085697858_Screenshot_2026-10-15_224321.png',
       status: 'Completed',
       featured: true,
       codeMetrics: { linesOfCode: 10200, testCoverage: 94 },
@@ -454,18 +454,32 @@ export const api = {
         updated_at: new Date().toISOString()
       };
 
-      const { data, error } = await supabase
-        .from('projects')
-        .update(payload)
-        .eq('id', id)
-        .select()
-        .single();
+      const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+      let query = supabase.from('projects').update(payload);
+      if (isUUID) {
+        query = query.eq('id', id);
+      } else {
+        query = query.ilike('title', projectData.title);
+      }
 
-      if (!error && data) return transformProject(data);
+      const { data, error } = await query.select();
+      if (!error && data && data.length > 0) {
+        const transformed = transformProject(data[0]);
+        const items = getLocalStore('projects');
+        const idx = items.findIndex(p => p._id === id || p.id === id || p.title === projectData.title);
+        if (idx !== -1) {
+          items[idx] = transformed;
+          setLocalStore('projects', items);
+        }
+        return transformed;
+      }
+      if (error) {
+        console.error('Supabase updateProject error:', error);
+      }
     }
 
     const items = getLocalStore('projects');
-    const idx = items.findIndex(p => p._id === id || p.id === id);
+    const idx = items.findIndex(p => p._id === id || p.id === id || p.title === projectData.title);
     if (idx !== -1) {
       items[idx] = { ...items[idx], ...projectData, updatedAt: new Date().toISOString() };
       setLocalStore('projects', items);
@@ -476,7 +490,10 @@ export const api = {
 
   deleteProject: async (id) => {
     if (isSupabaseConfigured()) {
-      await supabase.from('projects').delete().eq('id', id);
+      const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+      if (isUUID) {
+        await supabase.from('projects').delete().eq('id', id);
+      }
     }
     const items = getLocalStore('projects');
     const updated = items.filter(p => p._id !== id && p.id !== id);
