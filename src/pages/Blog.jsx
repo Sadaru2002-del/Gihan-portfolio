@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { Search, Calendar, Clock, ThumbsUp, ArrowLeft, Send, MessageSquare } from 'lucide-react';
+import { toast } from '../context/ToastContext';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -46,7 +47,7 @@ const Blog = () => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!commentForm.name || !commentForm.email || !commentForm.content) {
-      alert('Please fill in all fields.');
+      toast.warning('Please fill in your name, email, and comment.');
       return;
     }
 
@@ -59,9 +60,10 @@ const Blog = () => {
       setSelectedBlog(prev => ({ ...prev, comments: updatedComments }));
       setBlogs(prev => prev.map(b => b._id === selectedBlog._id ? { ...b, comments: updatedComments } : b));
       
+      toast.success('Your comment has been posted successfully!');
       setCommentForm({ name: '', email: '', content: '' });
     } catch (err) {
-      alert('Error saving comment: ' + err.message);
+      toast.error('Error saving comment: ' + err.message);
     } finally {
       setCommentLoading(false);
     }

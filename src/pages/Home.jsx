@@ -8,6 +8,7 @@ import ProjectCard from '../components/ProjectCard';
 import RecruiterPanel from '../components/RecruiterPanel';
 import { ArrowRight, Mail, Phone, MapPin, Send, Github, Linkedin, Star, CheckCircle, Flame, Download } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { toast } from '../context/ToastContext';
 
 const Home = () => {
   // Testimonials state
@@ -54,7 +55,7 @@ const Home = () => {
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     if (!contactData.name || !contactData.email || !contactData.content) {
-      alert('Please fill in name, email, and message content.');
+      toast.warning('Please fill in name, email, and message content.');
       return;
     }
 
@@ -70,6 +71,8 @@ const Home = () => {
         colors: ['#a855f7', '#6366f1']
       });
 
+      toast.success('Your message has been sent successfully! I will reply shortly.');
+
       // Show active message status tracking block
       setContactResponse({
         id: `MSG-${Math.floor(1000 + Math.random() * 9000)}`,
@@ -80,7 +83,7 @@ const Home = () => {
 
       setContactData({ name: '', email: '', subject: '', category: 'General Inquiry', content: '' });
     } catch (err) {
-      alert('Error sending message: ' + err.message);
+      toast.error('Error sending message: ' + err.message);
     } finally {
       setContactLoading(false);
     }

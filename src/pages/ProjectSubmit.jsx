@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { api } from '../utils/api';
 import FileUpload from '../components/FileUpload';
+import { toast } from '../context/ToastContext';
 
 const PRESET_TECH = [
   'React', 'Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Supabase',
@@ -116,9 +117,12 @@ const ProjectSubmit = () => {
 
       const result = await api.createProject(payload);
       setSuccessData(result);
+      toast.success('Project submitted and published successfully!');
     } catch (err) {
       console.error('Submission failed:', err);
-      setErrorMsg(err.message || 'Failed to submit project to Supabase.');
+      const msg = err.message || 'Failed to submit project to Supabase.';
+      setErrorMsg(msg);
+      toast.error(msg);
     } finally {
       setSubmitting(false);
     }
@@ -148,6 +152,7 @@ const ProjectSubmit = () => {
   const handleCopyCurrentLink = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopiedLink(true);
+    toast.info('Form URL copied to clipboard!');
     setTimeout(() => setCopiedLink(false), 2000);
   };
 

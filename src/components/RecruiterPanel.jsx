@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { Download, Calendar, CheckCircle, Award, Target, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { toast } from '../context/ToastContext';
 
 const RecruiterPanel = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ const RecruiterPanel = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.date) {
-      alert('Please fill in Name, Email, and Date.');
+      toast.warning('Please fill in Name, Email, and Date.');
       return;
     }
 
@@ -62,10 +63,11 @@ const RecruiterPanel = () => {
         colors: ['#a855f7', '#ec4899', '#6366f1']
       });
 
+      toast.success('Interview request submitted successfully! Looking forward to meeting you.');
       setSuccess(true);
       setFormData({ name: '', company: '', email: '', date: '', type: 'Technical Interview', message: '' });
     } catch (_err) {
-      alert('Error sending request. Please email directly at slsadaru2002@gmail.com.');
+      toast.error('Error sending request. Please email directly at slsadaru2002@gmail.com.');
     } finally {
       setLoading(false);
     }

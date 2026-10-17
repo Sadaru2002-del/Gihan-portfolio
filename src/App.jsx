@@ -7,6 +7,7 @@ import Blog from './pages/Blog';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import ProjectSubmit from './pages/ProjectSubmit';
+import { ToastProvider } from './context/ToastContext';
 
 const AppContent = () => {
   const location = useLocation();
@@ -35,7 +36,9 @@ const AppContent = () => {
 function App() {
   return (
     <HashRouter>
-      <AppContent />
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
     </HashRouter>
   );
 }

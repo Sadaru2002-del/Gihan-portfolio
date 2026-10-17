@@ -3,6 +3,7 @@ import { api } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import FileUpload from '../components/FileUpload';
 import { isSupabaseConfigured } from '../supabase';
+import { toast } from '../context/ToastContext';
 import {
   BarChart2,
   MessageSquare,
@@ -214,9 +215,10 @@ const AdminDashboard = () => {
     try {
       const newStatus = currentStatus === 'read' ? 'unread' : 'read';
       await api.updateMessageStatus(id, { status: newStatus });
+      toast.success(`Message marked as ${newStatus}!`);
       fetchMessages();
     } catch (e) {
-      alert('Error updating status');
+      toast.error('Error updating status');
     }
   };
 
@@ -224,10 +226,11 @@ const AdminDashboard = () => {
     if (!window.confirm('Delete message?')) return;
     try {
       await api.deleteMessage(id);
+      toast.success('Message deleted successfully!');
       fetchMessages();
       fetchStats();
     } catch (e) {
-      alert('Error deleting message');
+      toast.error('Error deleting message');
     }
   };
 
@@ -244,10 +247,10 @@ const AdminDashboard = () => {
     try {
       if (editingProjectId) {
         await api.updateProject(editingProjectId, formattedData);
-        alert('Project updated successfully!');
+        toast.success('Project updated successfully!');
       } else {
         await api.createProject(formattedData);
-        alert('Project published successfully!');
+        toast.success('Project published successfully!');
       }
       setProjectForm({
         title: '',
@@ -268,7 +271,7 @@ const AdminDashboard = () => {
       fetchProjects();
       fetchStats();
     } catch (err) {
-      alert('Error saving project: ' + err.message);
+      toast.error('Error saving project: ' + err.message);
     }
   };
 
@@ -295,10 +298,11 @@ const AdminDashboard = () => {
     if (!window.confirm('Delete project?')) return;
     try {
       await api.deleteProject(id);
+      toast.success('Project removed from showcase!');
       fetchProjects();
       fetchStats();
     } catch (e) {
-      alert('Error deleting project');
+      toast.error('Error deleting project');
     }
   };
 
@@ -313,17 +317,17 @@ const AdminDashboard = () => {
     try {
       if (editingBlogId) {
         await api.updateBlog(editingBlogId, formattedData);
-        alert('Blog updated successfully!');
+        toast.success('Blog article updated successfully!');
       } else {
         await api.createBlog(formattedData);
-        alert('Blog published successfully!');
+        toast.success('Blog article published successfully!');
       }
       setBlogForm({ title: '', category: 'Software Development', summary: '', content: '', coverImage: '', tags: '', status: 'Published' });
       setEditingBlogId(null);
       fetchBlogs();
       fetchStats();
     } catch (err) {
-      alert('Error saving blog: ' + err.message);
+      toast.error('Error saving blog: ' + err.message);
     }
   };
 
@@ -344,10 +348,11 @@ const AdminDashboard = () => {
     if (!window.confirm('Delete blog post?')) return;
     try {
       await api.deleteBlog(id);
+      toast.success('Blog article deleted successfully!');
       fetchBlogs();
       fetchStats();
     } catch (e) {
-      alert('Error deleting blog post');
+      toast.error('Error deleting blog post');
     }
   };
 
@@ -364,10 +369,10 @@ const AdminDashboard = () => {
     try {
       if (editingSkillId) {
         await api.updateSkill(editingSkillId, formattedData);
-        alert('Skill updated successfully!');
+        toast.success('Skill updated successfully!');
       } else {
         await api.createSkill(formattedData);
-        alert('Skill added successfully!');
+        toast.success('Skill added to matrix successfully!');
       }
       setSkillForm({
         name: '',
@@ -382,7 +387,7 @@ const AdminDashboard = () => {
       fetchSkills();
       fetchStats();
     } catch (err) {
-      alert('Error saving skill: ' + err.message);
+      toast.error('Error saving skill: ' + err.message);
     }
   };
 
@@ -403,10 +408,11 @@ const AdminDashboard = () => {
     if (!window.confirm('Delete skill?')) return;
     try {
       await api.deleteSkill(id);
+      toast.success('Skill deleted successfully!');
       fetchSkills();
       fetchStats();
     } catch (err) {
-      alert('Error deleting skill');
+      toast.error('Error deleting skill');
     }
   };
 
@@ -415,10 +421,10 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       await api.updateSettings(siteSettings);
-      alert('Settings updated successfully!');
+      toast.success('Site settings and profile updated successfully!');
       fetchSettings();
     } catch (err) {
-      alert('Error updating settings: ' + err.message);
+      toast.error('Error updating settings: ' + err.message);
     }
   };
 

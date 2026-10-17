@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { UploadCloud, CheckCircle, AlertCircle, Loader, Image as ImageIcon, Trash2, ExternalLink } from 'lucide-react';
 import { uploadToSupabaseStorage, deleteFromSupabaseStorage, isSupabaseConfigured } from '../supabase';
+import { toast } from '../context/ToastContext';
 
 const FileUpload = ({
   label = 'Upload Image/File',
@@ -31,7 +32,9 @@ const FileUpload = ({
 
     // Validate size
     if (file.size > maxSizeMB * 1024 * 1024) {
-      setError(`File exceeds maximum size limit of ${maxSizeMB}MB.`);
+      const errMsg = `File exceeds maximum size limit of ${maxSizeMB}MB.`;
+      setError(errMsg);
+      toast.warning(errMsg);
       return;
     }
 
@@ -46,9 +49,12 @@ const FileUpload = ({
         onUploadSuccess(result.publicUrl, result.path);
       }
       setNotice('✓ Photo uploaded successfully!');
+      toast.success('Photo uploaded to storage successfully!');
       setTimeout(() => setNotice(''), 4000);
     } catch (err) {
-      setError(err.message || 'Error uploading file to storage.');
+      const errMsg = err.message || 'Error uploading file to storage.';
+      setError(errMsg);
+      toast.error(errMsg);
     } finally {
       setUploading(false);
     }
@@ -87,6 +93,7 @@ const FileUpload = ({
         onUploadSuccess('', '');
       }
       setNotice('✓ Photo removed. Remember to click "Update Project" / "Save" to apply changes.');
+      toast.info('Photo removed from form. Remember to click "Update Project" to save changes.');
       setTimeout(() => setNotice(''), 6000);
     }
   };
