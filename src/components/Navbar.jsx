@@ -79,8 +79,9 @@ const Navbar = () => {
       style={{
         padding: isScrolled ? '12px 0' : '18px 0',
         borderBottom: isScrolled ? '1px solid var(--border-color)' : '1px solid transparent',
-        background: isScrolled ? 'rgba(5, 5, 8, 0.90)' : 'rgba(5, 5, 8, 0.3)',
-        backdropFilter: 'blur(20px)',
+        background: isScrolled ? 'var(--glass-bg)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        boxShadow: isScrolled ? 'var(--shadow-sm)' : 'none',
         transition: 'all 0.3s ease'
       }}
     >
@@ -226,8 +227,9 @@ const Navbar = () => {
       {isMenuOpen && (
         <div style={{
           position: 'absolute', top: '100%', left: 0, right: 0,
-          background: 'rgba(5,5,8,0.97)', backdropFilter: 'blur(20px)',
+          background: 'var(--bg-secondary)', backdropFilter: 'blur(20px)',
           borderBottom: '1px solid var(--border-color)',
+          boxShadow: 'var(--shadow-lg)',
           padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '4px', zIndex: 99
         }}>
           {[
@@ -306,7 +308,7 @@ const mobileNavButtonStyle = {
   fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.05rem',
   color: 'var(--color-text-secondary)', cursor: 'pointer',
   textAlign: 'left', width: '100%', padding: '10px 0',
-  borderBottom: '1px solid rgba(255,255,255,0.04)'
+  borderBottom: '1px solid var(--border-color)'
 };
 
 export default Navbar;

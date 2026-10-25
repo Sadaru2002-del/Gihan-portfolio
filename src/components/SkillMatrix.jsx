@@ -74,7 +74,7 @@ const SkillMatrix = () => {
                 className="glass-card"
                 style={{
                   padding: '16px 20px',
-                  background: 'rgba(255, 255, 255, 0.01)',
+                  background: 'var(--glass-bg)',
                   border: '1px solid var(--border-color)',
                   position: 'relative',
                   overflow: 'hidden'
@@ -92,7 +92,7 @@ const SkillMatrix = () => {
                 </div>
 
                 {/* Meter container */}
-                <div style={{ width: '100%', height: '6px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', height: '6px', background: 'var(--border-color)', borderRadius: '3px', overflow: 'hidden' }}>
                   <div
                     style={{
                       width: `${skill.level}%`,
@@ -108,7 +108,7 @@ const SkillMatrix = () => {
                 {skill.relationshipTree && skill.relationshipTree.length > 0 && (
                   <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
                     {skill.relationshipTree.map((rel, rIdx) => (
-                      <span key={rIdx} style={{ fontSize: '0.7rem', color: 'var(--color-text-tertiary)', background: 'rgba(255,255,255,0.03)', padding: '2px 6px', borderRadius: '4px' }}>
+                      <span key={rIdx} style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)', background: 'var(--bg-tertiary)', padding: '2px 6px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
                         ↳ {rel}
                       </span>
                     ))}
@@ -125,7 +125,7 @@ const SkillMatrix = () => {
             className="glass-card"
             style={{
               padding: '24px',
-              background: 'rgba(255, 255, 255, 0.01)',
+              background: 'var(--glass-bg)',
               width: '100%',
               maxWidth: '420px',
               display: 'flex',
@@ -138,16 +138,16 @@ const SkillMatrix = () => {
             {/* SVG Radar */}
             <svg viewBox="0 0 400 320" style={{ width: '100%', height: 'auto', maxWidth: '360px' }}>
               {/* Concentric grid lines */}
-              <polygon points="200,60 310,120 280,240 120,240 90,120" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-              <polygon points="200,100 275,145 250,215 150,215 125,145" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-              <polygon points="200,130 240,160 225,200 175,200 160,160" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+              <polygon className="radar-grid" points="200,60 310,120 280,240 120,240 90,120" fill="none" stroke="var(--border-color)" strokeWidth="1" />
+              <polygon className="radar-grid" points="200,100 275,145 250,215 150,215 125,145" fill="none" stroke="var(--border-color)" strokeWidth="1" />
+              <polygon className="radar-grid" points="200,130 240,160 225,200 175,200 160,160" fill="none" stroke="var(--border-color)" strokeWidth="1" />
               
               {/* Axes */}
-              <line x1="200" y1="160" x2="200" y2="30" stroke="rgba(255, 255, 255, 0.08)" />
-              <line x1="200" y1="160" x2="345" y2="115" stroke="rgba(255, 255, 255, 0.08)" />
-              <line x1="200" y1="160" x2="310" y2="265" stroke="rgba(255, 255, 255, 0.08)" />
-              <line x1="200" y1="160" x2="90" y2="265" stroke="rgba(255, 255, 255, 0.08)" />
-              <line x1="200" y1="160" x2="55" y2="115" stroke="rgba(255, 255, 255, 0.08)" />
+              <line className="radar-axis" x1="200" y1="160" x2="200" y2="30" stroke="var(--border-color)" />
+              <line className="radar-axis" x1="200" y1="160" x2="345" y2="115" stroke="var(--border-color)" />
+              <line className="radar-axis" x1="200" y1="160" x2="310" y2="265" stroke="var(--border-color)" />
+              <line className="radar-axis" x1="200" y1="160" x2="90" y2="265" stroke="var(--border-color)" />
+              <line className="radar-axis" x1="200" y1="160" x2="55" y2="115" stroke="var(--border-color)" />
 
               {/* Data Area Plotting */}
               {/* Map levels to scaled offsets: center (200,160). Outer point calculations: */}

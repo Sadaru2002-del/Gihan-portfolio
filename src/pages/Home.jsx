@@ -183,7 +183,7 @@ const Home = () => {
                     className="glass-card"
                     style={{
                       padding: '12px',
-                      background: 'rgba(255, 255, 255, 0.01)',
+                      background: 'var(--glass-bg)',
                       border: '1px solid var(--border-color)',
                       textAlign: 'center'
                     }}
@@ -249,7 +249,7 @@ const Home = () => {
       <section
         style={{
           padding: '24px 0',
-          background: 'rgba(5, 5, 8, 0.6)',
+          background: 'var(--bg-secondary)',
           borderTop: '1px solid var(--border-color)',
           borderBottom: '1px solid var(--border-color)',
           overflow: 'hidden',
@@ -460,7 +460,7 @@ const Home = () => {
             </div>
 
             {/* Right Side: Form & status checker */}
-            <div className="glass-card" style={{ padding: '32px', background: 'rgba(255, 255, 255, 0.01)' }}>
+            <div className="glass-card" style={{ padding: '32px', background: 'var(--glass-bg)' }}>
               
               {contactResponse ? (
                 /* Delivery tracker widget */
@@ -476,7 +476,7 @@ const Home = () => {
                   {/* Delivery statistics details */}
                   <div
                     style={{
-                      background: 'rgba(0,0,0,0.2)',
+                      background: 'var(--bg-tertiary)',
                       border: '1px solid var(--border-color)',
                       borderRadius: '12px',
                       padding: '16px',
@@ -552,7 +552,6 @@ const Home = () => {
                       value={contactData.category}
                       onChange={(e) => setContactData({ ...contactData, category: e.target.value })}
                       className="form-input"
-                      style={{ background: 'rgba(5, 5, 8, 0.9)', color: 'var(--color-text-primary)' }}
                     >
                       <option>General Inquiry</option>
                       <option>Collaboration Request</option>

@@ -118,18 +118,18 @@ const Terminal = () => {
       {/* Terminal Titlebar */}
       <div
         style={{
-          background: 'rgba(255, 255, 255, 0.05)',
+          background: '#12121a',
           padding: '10px 16px',
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          borderBottom: '1px solid var(--border-color)'
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
         }}
       >
         <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#EF4444', display: 'inline-block' }}></span>
         <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#F59E0B', display: 'inline-block' }}></span>
         <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10B981', display: 'inline-block' }}></span>
-        <span style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
+        <span style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>
           gihan-suminda-brand-os -- bash
         </span>
       </div>
@@ -143,7 +143,7 @@ const Terminal = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: '4px',
-          background: 'rgba(5, 5, 8, 0.9)',
+          background: '#09090f',
           color: '#10B981',
           textAlign: 'left'
         }}
@@ -171,9 +171,9 @@ const Terminal = () => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          background: 'rgba(5, 5, 8, 0.95)',
+          background: '#0d0d16',
           padding: '8px 16px',
-          borderTop: '1px solid var(--border-color)'
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)'
         }}
       >
         <span style={{ color: '#a855f7' }}>guest@gihan-portfolio</span>

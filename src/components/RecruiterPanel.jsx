@@ -113,7 +113,7 @@ const RecruiterPanel = () => {
         </div>
 
         {/* Availability Metrics */}
-        <div className="glass-card" style={{ padding: '20px', background: 'rgba(255,255,255,0.01)' }}>
+        <div className="glass-card" style={{ padding: '20px', background: 'var(--glass-bg)' }}>
           <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-tertiary)', marginBottom: '12px' }}>
             Core Metrics & Details
           </div>
@@ -140,7 +140,7 @@ const RecruiterPanel = () => {
       </div>
 
       {/* Right Column: Schedule Request Scheduler */}
-      <div className="glass-card" style={{ padding: '28px', background: 'rgba(255, 255, 255, 0.01)' }}>
+      <div className="glass-card" style={{ padding: '28px', background: 'var(--glass-bg)' }}>
         <h4 className="h4" style={{ fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '4px', textAlign: 'left' }}>
           Quick Interview Request
         </h4>
@@ -214,7 +214,6 @@ const RecruiterPanel = () => {
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                   className="form-input"
-                  style={{ background: 'rgba(5, 5, 8, 0.9)', color: 'var(--color-text-primary)' }}
                 >
                   <option>Introductory Call</option>
                   <option>Technical Interview</option>

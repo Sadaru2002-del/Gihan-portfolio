@@ -572,8 +572,8 @@ const styles = {
     zIndex: 0
   },
   header: {
-    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-    background: 'rgba(11, 11, 20, 0.75)',
+    borderBottom: '1px solid var(--border-color)',
+    background: 'var(--glass-bg)',
     backdropFilter: 'blur(16px)',
     position: 'sticky',
     top: 0,
@@ -592,7 +592,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    color: '#94a3b8',
+    color: 'var(--color-text-secondary)',
     textDecoration: 'none',
     fontSize: '0.85rem',
     fontWeight: 500,
@@ -602,21 +602,21 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    background: 'rgba(168, 85, 247, 0.1)',
-    border: '1px solid rgba(168, 85, 247, 0.3)',
+    background: 'rgba(var(--color-primary-rgb), 0.1)',
+    border: '1px solid rgba(var(--color-primary-rgb), 0.3)',
     borderRadius: '20px',
     padding: '4px 12px',
     fontSize: '0.75rem',
     fontWeight: 600,
-    color: '#c084fc'
+    color: 'var(--color-primary)'
   },
   headerBtn: {
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 255, 255, 0.12)',
-    color: '#e2e8f0',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
+    color: 'var(--color-text-primary)',
     padding: '6px 14px',
     borderRadius: '8px',
     fontSize: '0.8rem',
@@ -627,9 +627,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    background: 'rgba(168, 85, 247, 0.2)',
-    border: '1px solid rgba(168, 85, 247, 0.4)',
-    color: '#f3e8ff',
+    background: 'rgba(var(--color-primary-rgb), 0.15)',
+    border: '1px solid rgba(var(--color-primary-rgb), 0.35)',
+    color: 'var(--color-primary)',
     padding: '6px 14px',
     borderRadius: '8px',
     fontSize: '0.8rem',
@@ -674,26 +674,26 @@ const styles = {
     margin: '0 auto'
   },
   formCard: {
-    background: 'rgba(17, 17, 30, 0.75)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--border-color)',
     borderRadius: '16px',
     padding: '32px',
     display: 'flex',
     flexDirection: 'column',
     gap: '28px',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
+    boxShadow: 'var(--shadow-lg)'
   },
   formSection: {
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
     paddingBottom: '24px',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+    borderBottom: '1px solid var(--border-color)'
   },
   sectionHeading: {
     fontSize: '1.05rem',
     fontWeight: 600,
-    color: '#e2e8f0',
+    color: 'var(--color-text-primary)',
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
@@ -707,14 +707,14 @@ const styles = {
   label: {
     fontSize: '0.85rem',
     fontWeight: 600,
-    color: '#cbd5e1'
+    color: 'var(--color-text-secondary)'
   },
   input: {
-    background: 'rgba(255, 255, 255, 0.03)',
-    border: '1px solid rgba(255, 255, 255, 0.12)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '10px',
     padding: '12px 14px',
-    color: '#ffffff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     transition: 'border-color 0.2s',
@@ -722,22 +722,22 @@ const styles = {
     boxSizing: 'border-box'
   },
   select: {
-    background: '#131322',
-    border: '1px solid rgba(255, 255, 255, 0.12)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '10px',
     padding: '12px 14px',
-    color: '#ffffff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     width: '100%',
     boxSizing: 'border-box'
   },
   textarea: {
-    background: 'rgba(255, 255, 255, 0.03)',
-    border: '1px solid rgba(255, 255, 255, 0.12)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '10px',
     padding: '12px 14px',
-    color: '#ffffff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     resize: 'vertical',

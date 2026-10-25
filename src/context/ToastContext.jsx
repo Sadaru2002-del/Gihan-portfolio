@@ -153,11 +153,11 @@ export const ToastProvider = ({ children }) => {
                 gap: '14px',
                 padding: '16px 18px',
                 borderRadius: '14px',
-                background: 'rgba(13, 13, 22, 0.92)',
+                background: 'var(--bg-secondary)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 border: `1px solid ${config.borderColor}`,
-                boxShadow: `0 14px 35px -8px rgba(0, 0, 0, 0.6), 0 0 20px -3px ${config.glowColor}`,
+                boxShadow: `0 14px 35px -8px rgba(0, 0, 0, 0.4), 0 0 20px -3px ${config.glowColor}`,
                 overflow: 'hidden',
                 transition: 'all 0.25s ease',
               }}
@@ -187,7 +187,7 @@ export const ToastProvider = ({ children }) => {
                   style={{
                     fontSize: '0.88rem',
                     fontWeight: 700,
-                    color: '#ffffff',
+                    color: 'var(--color-text-primary)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
@@ -214,7 +214,7 @@ export const ToastProvider = ({ children }) => {
                 <div
                   style={{
                     fontSize: '0.82rem',
-                    color: '#cbd5e1',
+                    color: 'var(--color-text-secondary)',
                     marginTop: '4px',
                     lineHeight: '1.45',
                     wordBreak: 'break-word',

@@ -1486,10 +1486,10 @@ const AdminDashboard = () => {
       {/* Inject custom CSS directly */}
       <style>{`
         .glass-card {
-          background: rgba(10, 10, 15, 0.7) !important;
-          border: 1px solid rgba(255, 255, 255, 0.05) !important;
+          background: var(--glass-bg) !important;
+          border: 1px solid var(--border-color) !important;
           backdrop-filter: blur(16px) !important;
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+          box-shadow: var(--shadow-md) !important;
           border-radius: 12px;
         }
         
@@ -1525,8 +1525,8 @@ const AdminDashboard = () => {
 const styles = {
   dashboardWrapper: {
     minHeight: '100vh',
-    background: '#07070a',
-    color: '#f3f4f6',
+    background: 'var(--bg-primary)',
+    color: 'var(--color-text-primary)',
     display: 'flex',
     flexDirection: 'column',
     fontFamily: "var(--font-body), sans-serif",
@@ -1538,8 +1538,8 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '16px 20px',
-    background: 'rgba(7, 7, 10, 0.95)',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+    background: 'var(--glass-bg)',
+    borderBottom: '1px solid var(--border-color)',
     position: 'sticky',
     top: 0,
     zIndex: 1000,
@@ -1553,12 +1553,13 @@ const styles = {
     fontWeight: 800,
     fontFamily: 'var(--font-display)',
     fontSize: '1.2rem',
-    letterSpacing: '-0.02em'
+    letterSpacing: '-0.02em',
+    color: 'var(--color-text-primary)'
   },
   menuToggleBtn: {
     background: 'none',
     border: 'none',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     cursor: 'pointer',
     padding: '4px'
   },
@@ -1573,21 +1574,21 @@ const styles = {
     alignItems: 'start'
   },
   sidebar: {
-    background: 'rgba(10, 10, 15, 0.8)',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--border-color)',
     borderRadius: '16px',
     padding: '24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '20px',
     backdropFilter: 'blur(20px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)'
+    boxShadow: 'var(--shadow-md)'
   },
   sidebarHeader: {
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+    borderBottom: '1px solid var(--border-color)',
     paddingBottom: '16px'
   },
   sidebarTitle: {
@@ -1596,7 +1597,7 @@ const styles = {
     margin: 0,
     fontFamily: 'var(--font-display)',
     letterSpacing: '-0.02em',
-    color: '#fff'
+    color: 'var(--color-text-primary)'
   },
   adminProfileInfo: {
     display: 'flex',
@@ -1967,7 +1968,7 @@ const styles = {
     fontSize: '1.1rem',
     fontWeight: 700,
     margin: 0,
-    color: '#fff'
+    color: 'var(--color-text-primary)'
   },
   messageSenderInfo: {
     fontSize: '0.8rem',
@@ -1975,15 +1976,15 @@ const styles = {
   },
   messageDivider: {
     margin: '0 8px',
-    color: 'rgba(255, 255, 255, 0.1)'
+    color: 'var(--border-color)'
   },
   messageBody: {
     fontSize: '0.9rem',
     lineHeight: '1.6',
-    background: 'rgba(0, 0, 0, 0.2)',
+    background: 'var(--bg-tertiary)',
     padding: '16px',
     borderRadius: '8px',
-    border: '1px solid rgba(255, 255, 255, 0.03)',
+    border: '1px solid var(--border-color)',
     margin: 0,
     whiteSpace: 'pre-wrap'
   },
@@ -2000,7 +2001,7 @@ const styles = {
   formSectionTitle: {
     fontSize: '1.15rem',
     fontWeight: 700,
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     marginBottom: '24px',
     margin: 0,
     fontFamily: 'var(--font-display)'
@@ -2024,22 +2025,22 @@ const styles = {
     letterSpacing: '0.05em'
   },
   formInput: {
-    background: 'rgba(5, 5, 8, 0.8)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '8px',
     padding: '10px 14px',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     transition: 'all 0.2s',
     fontFamily: 'inherit'
   },
   formSelect: {
-    background: 'rgba(5, 5, 8, 0.8)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '8px',
     padding: '10px 14px',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     cursor: 'pointer',
@@ -2056,11 +2057,11 @@ const styles = {
     flexWrap: 'wrap'
   },
   formTextarea: {
-    background: 'rgba(5, 5, 8, 0.8)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '8px',
     padding: '10px 14px',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     fontSize: '0.9rem',
     outline: 'none',
     fontFamily: 'inherit',
@@ -2201,8 +2202,8 @@ const styles = {
   submissionLinkBox: {
     flex: 1,
     minWidth: '260px',
-    background: 'rgba(0, 0, 0, 0.4)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    background: 'var(--bg-tertiary)',
+    border: '1px solid var(--border-color)',
     borderRadius: '10px',
     padding: '10px 14px',
     overflow: 'hidden',
@@ -2212,16 +2213,16 @@ const styles = {
   submissionLinkText: {
     fontFamily: 'var(--font-mono, monospace)',
     fontSize: '0.85rem',
-    color: '#e2e8f0',
+    color: 'var(--color-text-primary)',
     userSelect: 'all'
   },
   copyLinkBtn: {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    background: 'rgba(255, 255, 255, 0.08)',
-    border: '1px solid rgba(255, 255, 255, 0.18)',
-    color: '#ffffff',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
+    color: 'var(--color-text-primary)',
     padding: '10px 18px',
     borderRadius: '10px',
     fontSize: '0.85rem',

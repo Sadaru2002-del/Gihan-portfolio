@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AIAssistant from './components/AIAssistant';
@@ -11,6 +11,16 @@ import { ToastProvider } from './context/ToastContext';
 
 const AppContent = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    // Initialize theme globally across all routes
+    if (localStorage.getItem('gihan_theme') === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, []);
+
   const isDedicatedPage = location.pathname.startsWith('/admin') ||
     location.pathname.startsWith('/login') ||
     location.pathname.startsWith('/submit-project');

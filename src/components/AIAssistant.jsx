@@ -182,7 +182,7 @@ const AIAssistant = () => {
                   key={idx}
                   onClick={() => handleSend(q)}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
+                    background: 'var(--bg-tertiary)',
                     border: '1px solid var(--border-color)',
                     borderRadius: '8px',
                     padding: '6px 10px',
@@ -215,7 +215,7 @@ const AIAssistant = () => {
               borderTop: '1px solid var(--border-color)',
               display: 'flex',
               gap: '8px',
-              background: 'rgba(0, 0, 0, 0.1)'
+              background: 'var(--bg-secondary)'
             }}
           >
             <input
@@ -225,7 +225,7 @@ const AIAssistant = () => {
               placeholder="Ask me something about Gihan..."
               style={{
                 flex: 1,
-                background: 'rgba(var(--bg-tertiary), 0.4)',
+                background: 'var(--bg-tertiary)',
                 border: '1px solid var(--border-color)',
                 borderRadius: '8px',
                 padding: '8px 12px',

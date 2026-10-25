@@ -121,13 +121,13 @@ const FileUpload = ({
             position: 'relative',
             padding: '12px 14px',
             borderRadius: '12px',
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(168, 85, 247, 0.25)',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border-color)',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
             flexWrap: 'wrap',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+            boxShadow: 'var(--shadow-sm)'
           }}
         >
           {isImage(previewUrl) ? (
@@ -139,8 +139,8 @@ const FileUpload = ({
                 height: '68px',
                 borderRadius: '8px',
                 objectFit: 'cover',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                background: '#0b0b12'
+                border: '1px solid var(--border-color)',
+                background: 'var(--bg-tertiary)'
               }}
             />
           ) : (
@@ -188,7 +188,7 @@ const FileUpload = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: 'var(--bg-tertiary)',
                   border: '1px solid var(--border-color)',
                   color: 'var(--color-text-secondary)',
                   padding: '6px 10px',
@@ -253,7 +253,7 @@ const FileUpload = ({
             padding: '24px 16px',
             textAlign: 'center',
             cursor: 'pointer',
-            background: isDragOver ? 'rgba(168, 85, 247, 0.05)' : 'rgba(255, 255, 255, 0.01)',
+            background: isDragOver ? 'rgba(var(--color-primary-rgb), 0.08)' : 'var(--bg-secondary)',
             transition: 'all 0.2s ease',
             display: 'flex',
             flexDirection: 'column',

@@ -97,7 +97,7 @@ const JourneyTimeline = () => {
                   width: '42px',
                   height: '42px',
                   borderRadius: '50%',
-                  background: isActive ? 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' : 'rgba(255, 255, 255, 0.05)',
+                  background: isActive ? 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' : 'var(--bg-secondary)',
                   border: isActive ? 'none' : '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
@@ -124,7 +124,7 @@ const JourneyTimeline = () => {
         className="glass-card"
         style={{
           padding: '32px',
-          background: 'rgba(255, 255, 255, 0.02)',
+          background: 'var(--glass-bg)',
           textAlign: 'left',
           animation: 'fadeIn 0.4s ease-out'
         }}

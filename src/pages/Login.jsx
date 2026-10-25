@@ -65,7 +65,7 @@ const Login = () => {
           <ArrowLeft size={14} /> Back to brand
         </button>
 
-        <div className="glass-card" style={{ padding: '36px', background: 'rgba(5, 5, 8, 0.85)' }}>
+        <div className="glass-card" style={{ padding: '36px', background: 'var(--glass-bg)' }}>
           <div style={{ textAlign: 'center', marginBottom: '28px' }}>
             <div
               style={{

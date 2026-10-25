@@ -56,7 +56,7 @@ const ProjectCard = () => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by title or tech stack..."
             className="form-input"
-            style={{ width: '100%', paddingLeft: '44px', background: 'rgba(255, 255, 255, 0.02)' }}
+            style={{ width: '100%', paddingLeft: '44px' }}
           />
         </div>
 
@@ -139,7 +139,7 @@ const ProjectCard = () => {
                     <span
                       key={tIdx}
                       style={{
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: 'var(--bg-tertiary)',
                         border: '1px solid var(--border-color)',
                         padding: '3px 8px',
                         borderRadius: '6px',
@@ -207,7 +207,7 @@ const ProjectCard = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(5, 5, 8, 0.85)',
+            background: 'rgba(15, 23, 42, 0.75)',
             backdropFilter: 'blur(16px)',
             zIndex: 1000,
             display: 'flex',
@@ -237,8 +237,8 @@ const ProjectCard = () => {
               <button
                 onClick={() => setSelectedProject(null)}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: 'none',
+                  background: 'var(--bg-tertiary)',
+                  border: '1px solid var(--border-color)',
                   color: 'var(--color-text-secondary)',
                   width: '32px',
                   height: '32px',
@@ -282,7 +282,7 @@ const ProjectCard = () => {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '12px',
-                background: 'rgba(255, 255, 255, 0.02)',
+                background: 'var(--bg-tertiary)',
                 border: '1px solid var(--border-color)',
                 padding: '16px',
                 borderRadius: '12px',

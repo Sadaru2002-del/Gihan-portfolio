@@ -195,7 +195,7 @@ const Blog = () => {
             {/* Tag List */}
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '48px' }}>
               {selectedBlog.tags.map((tag, idx) => (
-                <span key={idx} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '4px 10px', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                <span key={idx} style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', padding: '4px 10px', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
                   #{tag}
                 </span>
               ))}
@@ -213,7 +213,7 @@ const Blog = () => {
                   <div style={{ color: 'var(--color-text-tertiary)', fontSize: '0.9rem' }}>No comments posted yet. Be the first to share your thoughts!</div>
                 ) : (
                   selectedBlog.comments.map((comm, idx) => (
-                    <div key={idx} className="glass-card" style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.01)', border: '1px solid var(--border-color)' }}>
+                    <div key={idx} className="glass-card" style={{ padding: '16px 20px', background: 'var(--glass-bg)', border: '1px solid var(--border-color)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '0.85rem' }}>
                         <span style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>{comm.name}</span>
                         <span style={{ color: 'var(--color-text-tertiary)' }}>{new Date(comm.createdAt).toLocaleDateString()}</span>
@@ -225,7 +225,7 @@ const Blog = () => {
               </div>
 
               {/* Submit Comment form */}
-              <div className="glass-card" style={{ padding: '24px', background: 'rgba(255,255,255,0.01)' }}>
+              <div className="glass-card" style={{ padding: '24px', background: 'var(--glass-bg)' }}>
                 <h4 className="h4" style={{ fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '16px' }}>Leave a Comment</h4>
                 <form onSubmit={handleCommentSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -288,7 +288,7 @@ const Blog = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search articles by title, keywords, or tags..."
                 className="form-input"
-                style={{ width: '100%', paddingLeft: '44px', background: 'rgba(255, 255, 255, 0.02)' }}
+                style={{ width: '100%', paddingLeft: '44px' }}
               />
             </div>
 
@@ -349,7 +349,7 @@ const Blog = () => {
                     >
                       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                         {blog.tags.map((tag, tIdx) => (
-                          <span key={tIdx} style={{ fontSize: '0.7rem', color: 'var(--color-text-tertiary)', background: 'rgba(255,255,255,0.03)', padding: '2px 6px', borderRadius: '4px' }}>
+                          <span key={tIdx} style={{ fontSize: '0.7rem', color: 'var(--color-text-tertiary)', background: 'var(--bg-tertiary)', padding: '2px 6px', borderRadius: '4px' }}>
                             #{tag}
                           </span>
                         ))}
