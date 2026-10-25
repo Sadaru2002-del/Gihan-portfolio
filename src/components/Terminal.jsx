@@ -33,7 +33,7 @@ const Terminal = () => {
         break;
       case 'about':
         response.push({ type: 'output', text: 'Gihan Suminda - Undergraduate Software Engineer' });
-        response.push({ type: 'output', text: 'Degree:   BSc (Hons) in Software Engineering (3rd Year) @ Saegis Campus' });
+        response.push({ type: 'output', text: 'Degree:   BSc (Hons) in Software Engineering (4th Year) @ Saegis Campus' });
         response.push({ type: 'output', text: 'Role:     Full-Stack Developer (Intern) @ Fuchsius Pvt Ltd, Colombo' });
         response.push({ type: 'output', text: 'Profile:  Building efficient, scalable, and user-centric solutions in clean code & MERN.' });
         break;
@@ -60,7 +60,7 @@ const Terminal = () => {
         response.push({ type: 'output', text: ' gihan@brand-os' });
         response.push({ type: 'output', text: ' -------------' });
         response.push({ type: 'output', text: ' OS:       GihanSumindaOS x86_64' });
-        response.push({ type: 'output', text: ' Academic: Saegis Campus - BSc (Hons) Software Engineering (3rd Year)' });
+        response.push({ type: 'output', text: ' Academic: Saegis Campus - BSc (Hons) Software Engineering (4th Year)' });
         response.push({ type: 'output', text: ' Intern:   Fuchsius Pvt Ltd, Colombo' });
         response.push({ type: 'output', text: ' Dev Stack:MongoDB, Express.js, React.js, Node.js (MERN)' });
         response.push({ type: 'output', text: ' GitHub:   github.com/Sadaru2002-del' });

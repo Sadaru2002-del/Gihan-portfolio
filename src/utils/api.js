@@ -191,7 +191,7 @@ In modern software engineering, web accessibility (a11y) is not a feature—it i
   ],
   certificates: [
     { _id: 'cert-1', id: 'cert-1', title: '1-Month MERN Stack Mentorship', issuer: 'Fuchsius Pvt Ltd, Colombo', issueDate: 'May 2026', credentialId: 'FUCH-MERN-26', credentialUrl: '#', verificationLink: '#', badgeIcon: 'Award', category: 'Professional Certificate', order: 1 },
-    { _id: 'cert-2', id: 'cert-2', title: 'BSc (Hons) in Software Engineering (3rd Year)', issuer: 'Saegis Campus, Nugegoda', issueDate: 'Nov 2023 - Present', credentialId: 'SAEGIS-SE-3', credentialUrl: '#', verificationLink: '#', badgeIcon: 'CheckCircle', category: 'Academic', order: 2 },
+    { _id: 'cert-2', id: 'cert-2', title: 'BSc (Hons) in Software Engineering (4th Year)', issuer: 'Saegis Campus, Nugegoda', issueDate: 'Nov 2023 - Present', credentialId: 'SAEGIS-SE-4', credentialUrl: '#', verificationLink: '#', badgeIcon: 'CheckCircle', category: 'Academic', order: 2 },
     { _id: 'cert-3', id: 'cert-3', title: 'G.C.E. Advanced Level (A/L)', issuer: 'Sri Dharmananda Vidyayathana Piriwana, Balangoda', issueDate: '2021 - 2022', credentialId: 'AL-BL-2022', credentialUrl: '#', verificationLink: '#', badgeIcon: 'Award', category: 'Academic', order: 3 }
   ],
   testimonials: [

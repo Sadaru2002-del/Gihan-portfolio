@@ -17,8 +17,8 @@ const JourneyTimeline = () => {
       title: 'Undergraduate Degree',
       period: 'Nov 2023 - Present',
       icon: GraduationCap,
-      subtitle: 'BSc (Hons) in Software Engineering (3rd Year) · Saegis Campus',
-      description: 'Undergraduate at Saegis Campus, Nugegoda. Mastered clean code, software development, full-stack web architectures, and usability testing.',
+      subtitle: 'BSc (Hons) in Software Engineering (4th Year) · Saegis Campus',
+      description: 'Fourth Year Undergraduate at Saegis Campus, Nugegoda. Mastered clean code, software development, full-stack web architectures, and usability testing.',
       skills: ['Software Engineering', 'Full-Stack Development', 'Usability Testing', 'Clean Architecture']
     },
     {

@@ -146,7 +146,7 @@ const Home = () => {
                     ⚡ Full-Stack Developer (Intern) @ Fuchsius Pvt Ltd
                   </span>
                   <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', fontWeight: 600 }}>
-                    BSc (Hons) in Software Engineering (3rd Year) · Saegis Campus
+                    BSc (Hons) in Software Engineering (4th Year) · Saegis Campus
                   </div>
                 </div>
               </div>
