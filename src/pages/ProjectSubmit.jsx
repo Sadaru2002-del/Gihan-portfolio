@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   FolderPlus,
@@ -14,7 +14,9 @@ import {
   ShieldCheck,
   Check,
   Copy,
-  AlertCircle
+  AlertCircle,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { api } from '../utils/api';
 import FileUpload from '../components/FileUpload';
@@ -40,6 +42,28 @@ const CATEGORIES = [
 
 const ProjectSubmit = () => {
   const navigate = useNavigate();
+  const [theme, setTheme] = useState(() => localStorage.getItem('gihan_theme') || 'dark');
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('gihan_theme', next);
+    if (next === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem('gihan_theme') || 'dark';
+    setTheme(saved);
+    if (saved === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -175,7 +199,16 @@ const ProjectSubmit = () => {
             <span>Direct Project Entry Form</span>
           </div>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              style={{ ...styles.headerBtn, padding: '6px 10px' }}
+              title="Toggle Light / Dark Mode"
+            >
+              {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+              <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+            </button>
             <button
               type="button"
               onClick={handleCopyCurrentLink}
@@ -661,7 +694,7 @@ const styles = {
   mainTitle: {
     fontSize: '2rem',
     fontWeight: 700,
-    background: 'linear-gradient(135deg, #ffffff 40%, #c084fc 100%)',
+    background: 'linear-gradient(135deg, var(--color-text-primary) 40%, var(--color-primary) 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     marginBottom: '10px'
@@ -855,10 +888,10 @@ const styles = {
   successTitle: {
     fontSize: '1.6rem',
     fontWeight: 700,
-    color: '#ffffff'
+    color: 'var(--color-text-primary)'
   },
   successDesc: {
-    color: '#94a3b8',
+    color: 'var(--color-text-secondary)',
     fontSize: '1rem',
     lineHeight: 1.6,
     maxWidth: '520px'
@@ -887,9 +920,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    background: 'rgba(255, 255, 255, 0.08)',
-    border: '1px solid rgba(255, 255, 255, 0.15)',
-    color: '#ffffff',
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
+    color: 'var(--color-text-primary)',
     borderRadius: '10px',
     padding: '12px 22px',
     fontWeight: 600,

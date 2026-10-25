@@ -19,7 +19,7 @@ const AppContent = () => {
     } else {
       document.body.classList.remove('light-mode');
     }
-  }, []);
+  }, [location.pathname]);
 
   const isDedicatedPage = location.pathname.startsWith('/admin') ||
     location.pathname.startsWith('/login') ||

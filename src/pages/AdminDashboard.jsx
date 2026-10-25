@@ -26,7 +26,9 @@ import {
   Copy,
   ExternalLink,
   FolderPlus,
-  Sparkles
+  Sparkles,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -37,6 +39,29 @@ const AdminDashboard = () => {
   const [projects, setProjects] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('gihan_theme') || 'dark');
+
+  const toggleTheme = () => {
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setCurrentTheme(nextTheme);
+    localStorage.setItem('gihan_theme', nextTheme);
+    if (nextTheme === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem('gihan_theme') || 'dark';
+    setCurrentTheme(saved);
+    if (saved === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, []);
+
   const [siteSettings, setSiteSettings] = useState({
     siteName: '',
     theme: 'dark',
@@ -442,9 +467,18 @@ const AdminDashboard = () => {
           <Shield size={20} style={{ color: 'var(--color-primary)' }} />
           <span>GihanSuminda OS</span>
         </div>
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} style={styles.menuToggleBtn}>
-          {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button
+            onClick={toggleTheme}
+            style={styles.themeToggleBtn}
+            title={currentTheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+          >
+            {currentTheme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+          <button onClick={() => setSidebarOpen(!sidebarOpen)} style={styles.menuToggleBtn}>
+            {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <div style={styles.mainGrid} className="admin-main-grid">
@@ -454,8 +488,17 @@ const AdminDashboard = () => {
           transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)'
         }} className="sidebar-drawer">
           <div style={styles.sidebarHeader}>
-            <Shield size={24} style={{ color: 'var(--color-primary)' }} />
-            <h2 style={styles.sidebarTitle}>Admin Console</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Shield size={24} style={{ color: 'var(--color-primary)' }} />
+              <h2 style={styles.sidebarTitle}>Admin Console</h2>
+            </div>
+            <button
+              onClick={toggleTheme}
+              style={styles.themeToggleBtn}
+              title={currentTheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            >
+              {currentTheme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
           </div>
 
           <div style={styles.adminProfileInfo}>
@@ -509,8 +552,17 @@ const AdminDashboard = () => {
 
           <div style={styles.sidebarFooter}>
             <button
+              onClick={toggleTheme}
+              style={{ ...styles.sidebarBtn, color: 'var(--color-text-primary)' }}
+              className="secondary-btn"
+            >
+              {currentTheme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+              <span>{currentTheme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+            </button>
+
+            <button
               onClick={() => navigate('/')}
-              style={{ ...styles.sidebarBtn, borderColor: 'rgba(255,255,255,0.08)' }}
+              style={styles.sidebarBtn}
               className="secondary-btn"
             >
               <ArrowLeft size={16} /> Portfolio Home
@@ -518,7 +570,7 @@ const AdminDashboard = () => {
 
             <button
               onClick={handleLogout}
-              style={{ ...styles.sidebarBtn, color: 'var(--danger)', borderColor: 'rgba(239, 68, 68, 0.15)' }}
+              style={{ ...styles.sidebarBtn, color: 'var(--danger)', borderColor: 'rgba(239, 68, 68, 0.2)' }}
               className="secondary-btn"
             >
               <LogOut size={16} /> End Session
@@ -734,14 +786,14 @@ const AdminDashboard = () => {
                       </div>
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                          <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>
+                          <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                             🤖 AI Cloud Direct Project Injection Link
                           </h4>
                           <span style={styles.submissionBadge}>
                             Permanent Cloud URL (No Localhost)
                           </span>
                         </div>
-                        <p style={{ margin: '6px 0 0 0', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                        <p style={{ margin: '6px 0 0 0', fontSize: '0.85rem', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
                           මෙම <strong>Permanent Cloud Link</strong> එක ඕනෑම AI Chat එකකට (Antigravity, ChatGPT, Claude) ලබා දී, <em>"මේ link එකෙන් මගේ portfolio එකට මේ project එක add කරන්න"</em> යැයි පැවසූ විට, ඔබේ කිසිදු මැදිහත්වීමකින් තොරව AI මගින් සෘජුවම Project එක Database එකට Insert කරනු ඇත:
                         </p>
                       </div>
@@ -1561,7 +1613,22 @@ const styles = {
     border: 'none',
     color: 'var(--color-text-primary)',
     cursor: 'pointer',
-    padding: '4px'
+    padding: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  themeToggleBtn: {
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border-color)',
+    borderRadius: '8px',
+    color: 'var(--color-text-primary)',
+    padding: '7px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.2s'
   },
   mainGrid: {
     display: 'grid',
@@ -1587,6 +1654,7 @@ const styles = {
   sidebarHeader: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
     gap: '10px',
     borderBottom: '1px solid var(--border-color)',
     paddingBottom: '16px'
@@ -1603,10 +1671,10 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    background: 'rgba(255, 255, 255, 0.02)',
+    background: 'var(--bg-tertiary)',
     padding: '12px',
     borderRadius: '10px',
-    border: '1px solid rgba(255,255,255,0.03)'
+    border: '1px solid var(--border-color)'
   },
   avatarGlow: {
     width: '36px',
@@ -1621,7 +1689,7 @@ const styles = {
   adminName: {
     fontWeight: 700,
     fontSize: '0.9rem',
-    color: '#fff'
+    color: 'var(--color-text-primary)'
   },
   adminRole: {
     fontSize: '0.75rem',
@@ -1652,9 +1720,10 @@ const styles = {
     transition: 'all 0.2s ease'
   },
   activeNavItem: {
-    background: 'rgba(138, 43, 226, 0.12)',
-    color: '#fff',
-    borderLeft: '3px solid var(--color-primary)'
+    background: 'rgba(147, 51, 234, 0.12)',
+    color: 'var(--color-primary)',
+    borderLeft: '3px solid var(--color-primary)',
+    fontWeight: 700
   },
   navIconWrapper: {
     display: 'flex',
@@ -1681,14 +1750,15 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+    borderTop: '1px solid var(--border-color)',
     paddingTop: '16px'
   },
   sidebarBtn: {
     justifyContent: 'flex-start',
     fontSize: '0.85rem',
     padding: '10px 14px',
-    borderRadius: '8px'
+    borderRadius: '8px',
+    gap: '8px'
   },
   backdrop: {
     position: 'fixed',
@@ -1745,7 +1815,7 @@ const styles = {
     fontWeight: 800,
     fontFamily: 'var(--font-display)',
     letterSpacing: '-0.02em',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     margin: 0
   },
   sectionSubtitle: {
@@ -1761,12 +1831,12 @@ const styles = {
   statCard: {
     padding: '24px',
     borderRadius: '16px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
+    border: '1px solid var(--border-color)',
     display: 'flex',
     flexDirection: 'column',
     gap: '12px',
     textAlign: 'left',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+    boxShadow: 'var(--shadow-sm)'
   },
   statCardHeader: {
     display: 'flex',
@@ -1788,7 +1858,7 @@ const styles = {
     fontSize: '2rem',
     fontWeight: 800,
     fontFamily: 'var(--font-mono)',
-    color: '#fff'
+    color: 'var(--color-text-primary)'
   },
   analyticsDetailGrid: {
     display: 'grid',
@@ -1803,7 +1873,7 @@ const styles = {
     fontSize: '1.1rem',
     fontWeight: 700,
     fontFamily: 'var(--font-display)',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     marginBottom: '20px',
     margin: 0
   },
@@ -1829,10 +1899,10 @@ const styles = {
   chartBarOuter: {
     flex: 1,
     height: '10px',
-    background: 'rgba(255, 255, 255, 0.03)',
+    background: 'var(--bg-tertiary)',
     borderRadius: '5px',
     overflow: 'hidden',
-    border: '1px solid rgba(255,255,255,0.02)'
+    border: '1px solid var(--border-color)'
   },
   chartBarInner: {
     height: '100%',
@@ -1844,7 +1914,7 @@ const styles = {
     textAlign: 'right',
     fontSize: '0.85rem',
     fontWeight: 700,
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     fontFamily: 'var(--font-mono)'
   },
   osGrid: {
@@ -1865,7 +1935,7 @@ const styles = {
   osProgressWrapper: {
     flex: 1,
     height: '8px',
-    background: 'rgba(255, 255, 255, 0.03)',
+    background: 'var(--bg-tertiary)',
     borderRadius: '4px',
     overflow: 'hidden'
   },
@@ -1884,10 +1954,10 @@ const styles = {
   filterGroup: {
     display: 'flex',
     gap: '6px',
-    background: 'rgba(255, 255, 255, 0.03)',
+    background: 'var(--bg-tertiary)',
     padding: '4px',
     borderRadius: '8px',
-    border: '1px solid rgba(255, 255, 255, 0.05)'
+    border: '1px solid var(--border-color)'
   },
   filterBtn: {
     padding: '6px 12px',
@@ -2074,7 +2144,7 @@ const styles = {
   },
   cancelFormBtn: {
     background: 'transparent',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    border: '1px solid var(--border-color)',
     borderRadius: '8px',
     padding: '10px 16px',
     color: 'var(--color-text-secondary)',
@@ -2088,7 +2158,7 @@ const styles = {
   listSectionTitle: {
     fontSize: '1.15rem',
     fontWeight: 700,
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     marginBottom: '20px',
     margin: 0,
     fontFamily: 'var(--font-display)'
@@ -2114,7 +2184,7 @@ const styles = {
   itemTitle: {
     fontWeight: 700,
     fontSize: '0.95rem',
-    color: '#fff',
+    color: 'var(--color-text-primary)',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
@@ -2128,10 +2198,11 @@ const styles = {
     color: 'var(--color-text-tertiary)'
   },
   itemBadge: {
-    background: 'rgba(255,255,255,0.05)',
+    background: 'var(--bg-tertiary)',
     padding: '2px 6px',
     borderRadius: '4px',
-    color: 'var(--color-text-secondary)'
+    color: 'var(--color-text-secondary)',
+    border: '1px solid var(--border-color)'
   },
   itemActions: {
     display: 'flex',
@@ -2171,7 +2242,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)'
+    boxShadow: 'var(--shadow-sm)'
   },
   submissionLinkIcon: {
     width: '42px',
@@ -2236,7 +2307,7 @@ const styles = {
     gap: '8px',
     background: 'rgba(168, 85, 247, 0.15)',
     border: '1px solid rgba(168, 85, 247, 0.4)',
-    color: '#f3e8ff',
+    color: 'var(--color-primary)',
     padding: '10px 18px',
     borderRadius: '10px',
     fontSize: '0.85rem',
@@ -2250,7 +2321,7 @@ const styles = {
     gap: '8px',
     background: 'rgba(168, 85, 247, 0.25)',
     border: '1px solid rgba(168, 85, 247, 0.5)',
-    color: '#f3e8ff',
+    color: 'var(--color-primary)',
     padding: '10px 18px',
     borderRadius: '10px',
     fontSize: '0.85rem',

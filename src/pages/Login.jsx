@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
-import { Lock, Mail, ArrowLeft, ShieldCheck } from 'lucide-react';
+import { Lock, Mail, ArrowLeft, ShieldCheck, Sun, Moon } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('gihan_theme') || 'dark');
   const navigate = useNavigate();
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('gihan_theme', next);
+    if (next === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem('gihan_theme') || 'dark';
+    setTheme(saved);
+    if (saved === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, []);
 
   useEffect(() => {
     // Log page view
@@ -44,6 +66,28 @@ const Login = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
       <div className="gradient-mesh" />
+
+      {/* Theme Switcher Toggle */}
+      <button
+        onClick={toggleTheme}
+        className="secondary-btn"
+        style={{
+          padding: '8px 12px',
+          borderRadius: '8px',
+          position: 'absolute',
+          top: '40px',
+          right: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontSize: '0.8rem',
+          cursor: 'pointer'
+        }}
+        title="Toggle Light/Dark Theme"
+      >
+        {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+        <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+      </button>
 
       <div className="container" style={{ maxWidth: '420px' }}>
         {/* Back Link */}
