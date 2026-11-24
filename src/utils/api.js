@@ -245,20 +245,24 @@ In modern software engineering, web accessibility (a11y) is not a feature—it i
   }
 };
 
-// Normalize project images so dead Supabase URLs or missing images are instantly repaired
+// Normalize project images so missing images have fallbacks, while preserving all valid URLs
 const normalizeProjectImages = (projectsList) => {
   if (!Array.isArray(projectsList)) return projectsList;
   return projectsList.map((p, idx) => {
     const key = p.id || p._id || `proj-${idx + 1}`;
     const defaultImg = defaultProjectImages[key] || defaultProjectImages[`proj-${idx + 1}`] || '/projects/gihan_portfolio_screenshot.png';
-    // If empty, broken supabase URL, or previous placeholder SVG for proj-2, update to user's real screenshot
-    if (
-      !p.imageUrl ||
-      p.imageUrl.includes('quaattpwaoqojzlvpbaz.supabase.co') ||
-      (key === 'proj-2' && (p.imageUrl === '/projects/portfolio_3d.svg' || p.imageUrl.includes('portfolio_3d.svg')))
-    ) {
+
+    // If empty or missing image, use default
+    if (!p.imageUrl || p.imageUrl.trim() === '') {
       return { ...p, imageUrl: defaultImg };
     }
+
+    // If 3D Portfolio still has the legacy .svg icon, upgrade to user's real screenshot
+    if ((key === 'proj-2' || (p.title && p.title.toLowerCase().includes('3d portfolio'))) && p.imageUrl.endsWith('.svg')) {
+      return { ...p, imageUrl: '/projects/gihan_portfolio_screenshot.png' };
+    }
+
+    // Keep all valid Supabase storage URLs, local paths, and data URLs completely intact!
     return p;
   });
 };
@@ -437,30 +441,39 @@ export const api = {
   },
 
   createProject: async (projectData) => {
-    if (isSupabaseConfigured()) {
-      const payload = {
-        title: projectData.title,
-        description: projectData.description,
-        long_description: projectData.longDescription || projectData.description,
-        category: projectData.category || 'Web App',
-        technologies: projectData.technologies || [],
-        github_link: projectData.githubLink || '',
-        live_link: projectData.liveLink || '',
-        image_url: projectData.imageUrl || '',
-        status: projectData.status || 'Completed',
-        code_metrics: projectData.codeMetrics || { linesOfCode: 0, testCoverage: 0 },
-        performance_metrics: projectData.performanceMetrics || { lighthouseScore: 100, loadTimeMs: 400 },
-        architecture_diagram: projectData.architectureDiagram || '',
-        screenshots: projectData.screenshots || []
-      };
+    let createdItem = null;
 
-      const { data, error } = await supabase.from('projects').insert([payload]).select().single();
-      if (!error && data) return transformProject(data);
-      if (error) console.error('Supabase createProject error:', error);
+    if (isSupabaseConfigured()) {
+      try {
+        const payload = {
+          title: projectData.title,
+          description: projectData.description,
+          long_description: projectData.longDescription || projectData.description,
+          category: projectData.category || 'Web App',
+          technologies: projectData.technologies || [],
+          github_link: projectData.githubLink || '',
+          live_link: projectData.liveLink || '',
+          image_url: projectData.imageUrl || '',
+          status: projectData.status || 'Completed',
+          code_metrics: projectData.codeMetrics || { linesOfCode: 0, testCoverage: 0 },
+          performance_metrics: projectData.performanceMetrics || { lighthouseScore: 100, loadTimeMs: 400 },
+          architecture_diagram: projectData.architectureDiagram || '',
+          screenshots: projectData.screenshots || []
+        };
+
+        const { data, error } = await supabase.from('projects').insert([payload]).select().single();
+        if (!error && data) {
+          createdItem = transformProject(data);
+        } else if (error) {
+          console.error('Supabase createProject error:', error);
+        }
+      } catch (err) {
+        console.warn('Supabase createProject network error, falling back to local storage:', err.message);
+      }
     }
 
     const items = getLocalStore('projects');
-    const newItem = {
+    const newItem = createdItem || {
       ...projectData,
       _id: 'proj-' + Date.now(),
       id: 'proj-' + Date.now(),
@@ -468,71 +481,103 @@ export const api = {
     };
     items.unshift(newItem);
     setLocalStore('projects', items);
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('portfolio_projects_updated'));
+    }
+
     return newItem;
   },
 
   updateProject: async (id, projectData) => {
+    let updatedItem = null;
+
     if (isSupabaseConfigured()) {
-      const payload = {
-        title: projectData.title,
-        description: projectData.description,
-        long_description: projectData.longDescription,
-        category: projectData.category,
-        technologies: projectData.technologies,
-        github_link: projectData.githubLink,
-        live_link: projectData.liveLink,
-        image_url: projectData.imageUrl,
-        status: projectData.status,
-        code_metrics: projectData.codeMetrics,
-        performance_metrics: projectData.performanceMetrics,
-        architecture_diagram: projectData.architectureDiagram,
-        updated_at: new Date().toISOString()
-      };
+      try {
+        const payload = {
+          title: projectData.title,
+          description: projectData.description,
+          long_description: projectData.longDescription || projectData.description,
+          category: projectData.category,
+          technologies: projectData.technologies,
+          github_link: projectData.githubLink,
+          live_link: projectData.liveLink,
+          image_url: projectData.imageUrl,
+          status: projectData.status,
+          code_metrics: projectData.codeMetrics,
+          performance_metrics: projectData.performanceMetrics,
+          architecture_diagram: projectData.architectureDiagram,
+          updated_at: new Date().toISOString()
+        };
 
-      const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
-      let query = supabase.from('projects').update(payload);
-      if (isUUID) {
-        query = query.eq('id', id);
-      } else {
-        query = query.ilike('title', projectData.title);
-      }
-
-      const { data, error } = await query.select();
-      if (!error && data && data.length > 0) {
-        const transformed = transformProject(data[0]);
-        const items = getLocalStore('projects');
-        const idx = items.findIndex(p => p._id === id || p.id === id || p.title === projectData.title);
-        if (idx !== -1) {
-          items[idx] = transformed;
-          setLocalStore('projects', items);
+        const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+        let query = supabase.from('projects').update(payload);
+        if (isUUID) {
+          query = query.eq('id', id);
+        } else {
+          query = query.ilike('title', projectData.title);
         }
-        return transformed;
-      }
-      if (error) {
-        console.error('Supabase updateProject error:', error);
+
+        const { data, error } = await query.select();
+        if (!error && data && data.length > 0) {
+          updatedItem = transformProject(data[0]);
+        } else if (error) {
+          console.error('Supabase updateProject error:', error);
+        }
+      } catch (err) {
+        console.warn('Supabase updateProject network error, falling back to local store:', err.message);
       }
     }
 
     const items = getLocalStore('projects');
     const idx = items.findIndex(p => p._id === id || p.id === id || p.title === projectData.title);
+    const finalItem = updatedItem || {
+      ...(idx !== -1 ? items[idx] : {}),
+      ...projectData,
+      _id: id,
+      id: id,
+      updatedAt: new Date().toISOString()
+    };
+
     if (idx !== -1) {
-      items[idx] = { ...items[idx], ...projectData, updatedAt: new Date().toISOString() };
-      setLocalStore('projects', items);
-      return items[idx];
+      items[idx] = finalItem;
+    } else {
+      items.unshift(finalItem);
     }
-    return projectData;
+    setLocalStore('projects', items);
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('portfolio_projects_updated'));
+    }
+
+    return finalItem;
   },
 
   deleteProject: async (id) => {
     if (isSupabaseConfigured()) {
-      const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
-      if (isUUID) {
-        await supabase.from('projects').delete().eq('id', id);
+      try {
+        const isUUID = typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+        if (isUUID) {
+          await supabase.from('projects').delete().eq('id', id);
+        } else {
+          const items = getLocalStore('projects');
+          const target = items.find(p => p._id === id || p.id === id);
+          if (target && target.title) {
+            await supabase.from('projects').delete().ilike('title', target.title);
+          }
+        }
+      } catch (err) {
+        console.warn('Supabase deleteProject error:', err.message);
       }
     }
     const items = getLocalStore('projects');
     const updated = items.filter(p => p._id !== id && p.id !== id);
     setLocalStore('projects', updated);
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('portfolio_projects_updated'));
+    }
+
     return { success: true };
   },
 

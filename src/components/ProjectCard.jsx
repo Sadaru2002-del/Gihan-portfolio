@@ -21,6 +21,18 @@ const ProjectCard = () => {
       }
     };
     fetchProjects();
+
+    const handleUpdate = () => {
+      fetchProjects();
+    };
+
+    window.addEventListener('portfolio_projects_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+
+    return () => {
+      window.removeEventListener('portfolio_projects_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
   }, []);
 
   const dynamicCategories = ['All', ...Array.from(new Set(projects.map(p => p.category).filter(Boolean)))];

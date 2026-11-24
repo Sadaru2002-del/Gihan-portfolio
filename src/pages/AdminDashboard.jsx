@@ -301,7 +301,7 @@ const AdminDashboard = () => {
   };
 
   const handleEditProject = (proj) => {
-    setEditingProjectId(proj._id);
+    setEditingProjectId(proj._id || proj.id);
     setProjectForm({
       title: proj.title || '',
       description: proj.description || '',
@@ -317,6 +317,10 @@ const AdminDashboard = () => {
       lighthouseScore: proj.performanceMetrics?.lighthouseScore || 100,
       architectureDiagram: proj.architectureDiagram || ''
     });
+    const formElement = document.getElementById('project-form-container');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleDeleteProject = async (id) => {
@@ -885,7 +889,7 @@ const AdminDashboard = () => {
                         {editingProjectId ? 'Modify Existing Entry' : 'Create Showcase Project'}
                       </h4>
 
-                      <form onSubmit={handleProjectSubmit} style={styles.dashboardForm}>
+                      <form id="project-form-container" onSubmit={handleProjectSubmit} style={styles.dashboardForm}>
                         <div style={styles.formGroup}>
                           <label style={styles.formLabel}>Project Title</label>
                           <input
