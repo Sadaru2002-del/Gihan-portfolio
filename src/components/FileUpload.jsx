@@ -324,7 +324,7 @@ const FileUpload = ({
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '4px' }}>
         <input
           type="text"
-          placeholder="Or paste direct image URL (e.g. /projects/portfolio_3d.svg or https://...)"
+          placeholder="Or paste direct image URL (e.g. /projects/gihan_portfolio_screenshot.png or https://...)"
           value={directUrlInput}
           onChange={(e) => setDirectUrlInput(e.target.value)}
           className="form-input"

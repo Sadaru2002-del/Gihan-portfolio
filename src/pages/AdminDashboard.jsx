@@ -1087,7 +1087,7 @@ const AdminDashboard = () => {
                                   <img
                                     src={proj.imageUrl}
                                     alt={proj.title}
-                                    onError={(e) => { e.target.onerror = null; e.target.src = '/projects/portfolio_3d.svg'; }}
+                                    onError={(e) => { e.target.onerror = null; e.target.src = '/projects/gihan_portfolio_screenshot.png'; }}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                   />
                                 ) : (

@@ -132,7 +132,7 @@ const ProjectCard = () => {
                       loading="lazy"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/projects/portfolio_3d.svg';
+                        e.target.src = '/projects/gihan_portfolio_screenshot.png';
                       }}
                       style={{ width: '100%', height: '180px', objectFit: 'cover' }}
                     />
@@ -291,7 +291,7 @@ const ProjectCard = () => {
                   alt={selectedProject.title}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = '/projects/portfolio_3d.svg';
+                    e.target.src = '/projects/gihan_portfolio_screenshot.png';
                   }}
                   style={{ width: '100%', height: 'auto', maxHeight: '340px', objectFit: 'cover' }}
                 />

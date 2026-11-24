@@ -4,7 +4,7 @@ const API_BASE = 'http://localhost:5000/api';
 
 const defaultProjectImages = {
   'proj-1': '/projects/life_resilience.svg',
-  'proj-2': '/projects/portfolio_3d.svg',
+  'proj-2': '/projects/gihan_portfolio_screenshot.png',
   'proj-3': '/projects/lumina_dining.svg',
   'proj-4': '/projects/library_system.svg',
   'proj-5': '/projects/ecommerce_clothing.svg'
@@ -41,7 +41,7 @@ const initialSeedData = {
       technologies: ['React', 'Three.js', 'Supabase', 'PWA', 'Recharts'],
       githubLink: 'https://github.com/Sadaru2002-del/Gihan-portfolio',
       liveLink: 'http://localhost:5173/',
-      imageUrl: '/projects/portfolio_3d.svg',
+      imageUrl: '/projects/gihan_portfolio_screenshot.png',
       status: 'Completed',
       featured: true,
       codeMetrics: { linesOfCode: 10200, testCoverage: 94 },
@@ -250,8 +250,13 @@ const normalizeProjectImages = (projectsList) => {
   if (!Array.isArray(projectsList)) return projectsList;
   return projectsList.map((p, idx) => {
     const key = p.id || p._id || `proj-${idx + 1}`;
-    const defaultImg = defaultProjectImages[key] || defaultProjectImages[`proj-${idx + 1}`] || '/projects/portfolio_3d.svg';
-    if (!p.imageUrl || p.imageUrl.includes('quaattpwaoqojzlvpbaz.supabase.co')) {
+    const defaultImg = defaultProjectImages[key] || defaultProjectImages[`proj-${idx + 1}`] || '/projects/gihan_portfolio_screenshot.png';
+    // If empty, broken supabase URL, or previous placeholder SVG for proj-2, update to user's real screenshot
+    if (
+      !p.imageUrl ||
+      p.imageUrl.includes('quaattpwaoqojzlvpbaz.supabase.co') ||
+      (key === 'proj-2' && (p.imageUrl === '/projects/portfolio_3d.svg' || p.imageUrl.includes('portfolio_3d.svg')))
+    ) {
       return { ...p, imageUrl: defaultImg };
     }
     return p;
