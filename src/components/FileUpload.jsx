@@ -19,6 +19,7 @@ const FileUpload = ({
   const [notice, setNotice] = useState('');
   const [previewUrl, setPreviewUrl] = useState(currentUrl || '');
   const [isDragOver, setIsDragOver] = useState(false);
+  const [directUrlInput, setDirectUrlInput] = useState('');
   const fileInputRef = useRef(null);
 
   // Synchronize internal preview when external currentUrl changes (e.g. editing a project or resetting)
@@ -48,13 +49,29 @@ const FileUpload = ({
       if (onUploadSuccess) {
         onUploadSuccess(result.publicUrl, result.path);
       }
-      setNotice('✓ Photo uploaded successfully!');
+      setNotice('✓ Photo uploaded to cloud storage!');
       toast.success('Photo uploaded to storage successfully!');
       setTimeout(() => setNotice(''), 4000);
     } catch (err) {
-      const errMsg = err.message || 'Error uploading file to storage.';
-      setError(errMsg);
-      toast.error(errMsg);
+      console.warn('Supabase storage upload failed, falling back to local file reader:', err);
+      // Fallback: Read file into Data URL (Base64) so it works offline or when Supabase is paused!
+      const reader = new FileReader();
+      reader.onload = (readerEvt) => {
+        const localDataUrl = readerEvt.target.result;
+        setPreviewUrl(localDataUrl);
+        if (onUploadSuccess) {
+          onUploadSuccess(localDataUrl, `local/${file.name}`);
+        }
+        setNotice('✓ Photo attached locally! Click "Update Project" to save.');
+        toast.success('Photo attached! Remember to save changes.');
+        setTimeout(() => setNotice(''), 5000);
+      };
+      reader.onerror = () => {
+        const errMsg = 'Error reading file on device.';
+        setError(errMsg);
+        toast.error(errMsg);
+      };
+      reader.readAsDataURL(file);
     } finally {
       setUploading(false);
     }
@@ -302,6 +319,34 @@ const FileUpload = ({
           )}
         </div>
       )}
+
+      {/* Direct URL input option */}
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '4px' }}>
+        <input
+          type="text"
+          placeholder="Or paste direct image URL (e.g. /projects/portfolio_3d.svg or https://...)"
+          value={directUrlInput}
+          onChange={(e) => setDirectUrlInput(e.target.value)}
+          className="form-input"
+          style={{ flex: 1, fontSize: '0.8rem', padding: '7px 12px' }}
+        />
+        <button
+          type="button"
+          onClick={() => {
+            if (!directUrlInput.trim()) return;
+            const cleanUrl = directUrlInput.trim();
+            setPreviewUrl(cleanUrl);
+            if (onUploadSuccess) onUploadSuccess(cleanUrl, cleanUrl);
+            setNotice('✓ Image URL applied! Remember to save changes.');
+            toast.success('Image URL attached!');
+            setTimeout(() => setNotice(''), 4000);
+          }}
+          className="secondary-btn"
+          style={{ padding: '7px 14px', fontSize: '0.78rem', whiteSpace: 'nowrap' }}
+        >
+          Attach URL
+        </button>
+      </div>
 
       {notice && (
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10b981', fontSize: '0.78rem', marginTop: '2px', fontWeight: 500 }}>

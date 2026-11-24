@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="blurFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)" />
+
+  <!-- Glowing Orbs -->
+  <circle cx="200" cy="150" r="120" fill="#10b981" opacity="0.15" filter="url(#blurFilter)" />
+  <circle cx="600" cy="300" r="140" fill="#6366f1" opacity="0.2" filter="url(#blurFilter)" />
+
+  <!-- Grid Lines -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="270" x2="800" y2="270" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="160" y1="0" x2="160" y2="450" />
+    <line x1="320" y1="0" x2="320" y2="450" />
+    <line x1="480" y1="0" x2="480" y2="450" />
+    <line x1="640" y1="0" x2="640" y2="450" />
+  </g>
+
+  <!-- Central Dashboard UI Card -->
+  <g transform="translate(140, 60)">
+    <!-- Card Frame -->
+    <rect width="520" height="330" rx="16" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    
+    <!-- Window Header -->
+    <rect width="520" height="40" rx="16" fill="rgba(255, 255, 255, 0.04)" />
+    <circle cx="25" cy="20" r="5" fill="#ef4444" />
+    <circle cx="42" cy="20" r="5" fill="#f59e0b" />
+    <circle cx="59" cy="20" r="5" fill="#10b981" />
+    <text x="260" y="24" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle" font-weight="600">Life Resilience — AI Coach Platform</text>
+
+    <!-- Stat Widget 1: Mood Tracker -->
+    <rect x="30" y="65" width="140" height="90" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)" />
+    <text x="45" y="88" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700">MOOD & WELLNESS</text>
+    <text x="45" y="118" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">94.8%</text>
+    <path d="M 45 135 Q 75 125, 105 130 T 155 120" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Stat Widget 2: AI Coach -->
+    <rect x="190" y="65" width="140" height="90" rx="10" fill="rgba(99, 102, 241, 0.08)" stroke="rgba(99, 102, 241, 0.3)" />
+    <text x="205" y="88" fill="#818cf8" font-family="system-ui, sans-serif" font-size="10" font-weight="700">AI COACH ADVICE</text>
+    <text x="205" y="118" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">Active</text>
+    <circle cx="305" cy="120" r="10" fill="#6366f1" opacity="0.3" />
+    <circle cx="305" cy="120" r="5" fill="#818cf8" />
+
+    <!-- Stat Widget 3: Finance & Goals -->
+    <rect x="350" y="65" width="140" height="90" rx="10" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.3)" />
+    <text x="365" y="88" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="10" font-weight="700">BUDGET & CAREER</text>
+    <text x="365" y="118" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">12 Goals</text>
+    <rect x="365" y="130" width="100" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+    <rect x="365" y="130" width="78" height="6" rx="3" fill="#f59e0b" />
+
+    <!-- Pulse Chart Area -->
+    <g transform="translate(30, 175)">
+      <rect width="460" height="125" rx="10" fill="rgba(0, 0, 0, 0.25)" stroke="rgba(255, 255, 255, 0.08)" />
+      <text x="20" y="25" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Daily Telemetry & Cognitive Resilience Flow</text>
+      <!-- Pulse Curve -->
+      <path d="M 20 85 Q 70 40, 120 75 T 220 50 T 320 80 T 420 35 L 440 60" fill="none" stroke="url(#glow)" stroke-width="3" stroke-linecap="round" />
+      <!-- Indicator Dot -->
+      <circle cx="420" cy="35" r="5" fill="#34d399" />
+      <circle cx="420" cy="35" r="9" fill="#34d399" opacity="0.3" />
+    </g>
+  </g>
+</svg>

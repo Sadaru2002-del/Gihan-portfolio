@@ -124,9 +124,23 @@ const ProjectCard = () => {
                 <h3 className="h3" style={{ marginBottom: '8px', fontFamily: 'var(--font-display)', fontWeight: 700 }}>
                   {project.title}
                 </h3>
-                {project.imageUrl && (
-                  <div style={{ marginBottom: '14px', borderRadius: '10px', overflow: 'hidden', maxHeight: '180px', border: '1px solid var(--border-color)' }}>
-                    <img src={project.imageUrl} alt={project.title} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
+                {project.imageUrl ? (
+                  <div style={{ marginBottom: '14px', borderRadius: '10px', overflow: 'hidden', height: '180px', border: '1px solid var(--border-color)', background: 'var(--bg-tertiary)' }}>
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/projects/portfolio_3d.svg';
+                      }}
+                      style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+                    />
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: '14px', borderRadius: '10px', overflow: 'hidden', height: '180px', border: '1px solid var(--border-color)', background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(59, 130, 246, 0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '8px' }}>
+                    <span style={{ fontSize: '2.5rem' }}>💻</span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-secondary)' }}>{project.title}</span>
                   </div>
                 )}
                 <p className="body-medium" style={{ fontSize: '0.9rem', marginBottom: '16px', lineHeight: '1.6' }}>
@@ -271,8 +285,16 @@ const ProjectCard = () => {
             </div>
 
             {selectedProject.imageUrl && (
-              <div style={{ marginBottom: '24px', borderRadius: '12px', overflow: 'hidden', maxHeight: '320px', border: '1px solid var(--border-color)' }}>
-                <img src={selectedProject.imageUrl} alt={selectedProject.title} style={{ width: '100%', height: 'auto', maxHeight: '320px', objectFit: 'cover' }} />
+              <div style={{ marginBottom: '24px', borderRadius: '12px', overflow: 'hidden', maxHeight: '340px', border: '1px solid var(--border-color)', background: 'var(--bg-tertiary)' }}>
+                <img
+                  src={selectedProject.imageUrl}
+                  alt={selectedProject.title}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/projects/portfolio_3d.svg';
+                  }}
+                  style={{ width: '100%', height: 'auto', maxHeight: '340px', objectFit: 'cover' }}
+                />
               </div>
             )}
 

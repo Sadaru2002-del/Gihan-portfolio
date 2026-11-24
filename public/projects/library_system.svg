@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgLib" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05192d" />
+      <stop offset="50%" stop-color="#0a2540" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="glowLib" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgLib)" />
+
+  <circle cx="220" cy="180" r="140" fill="#0284c7" opacity="0.18" filter="url(#glowLib)" />
+  <circle cx="620" cy="260" r="150" fill="#38bdf8" opacity="0.15" filter="url(#glowLib)" />
+
+  <!-- Library Management Dashboard Card -->
+  <g transform="translate(130, 55)">
+    <rect width="540" height="340" rx="16" fill="rgba(8, 28, 48, 0.88)" stroke="rgba(56, 189, 248, 0.28)" stroke-width="1.5" />
+    
+    <!-- Header -->
+    <rect width="540" height="44" rx="16" fill="rgba(255, 255, 255, 0.03)" />
+    <circle cx="25" cy="22" r="5" fill="#ef4444" />
+    <circle cx="42" cy="22" r="5" fill="#f59e0b" />
+    <circle cx="59" cy="22" r="5" fill="#10b981" />
+    <text x="270" y="27" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle" font-weight="700">LIBRARY CORE ADMIN — MONGOOSE ODM &amp; REST API</text>
+
+    <!-- Metrics -->
+    <g transform="translate(30, 65)">
+      <rect width="145" height="75" rx="10" fill="rgba(2, 132, 199, 0.12)" stroke="rgba(56, 189, 248, 0.3)" />
+      <text x="20" y="28" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="10" font-weight="700">CATALOG TITLES</text>
+      <text x="20" y="55" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">14,820</text>
+    </g>
+
+    <g transform="translate(195, 65)">
+      <rect width="145" height="75" rx="10" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.3)" />
+      <text x="20" y="28" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700">ACTIVE BORROWS</text>
+      <text x="20" y="55" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="800">1,240</text>
+    </g>
+
+    <g transform="translate(360, 65)">
+      <rect width="150" height="75" rx="10" fill="rgba(168, 85, 247, 0.12)" stroke="rgba(168, 85, 247, 0.3)" />
+      <text x="20" y="28" fill="#c084fc" font-family="system-ui, sans-serif" font-size="10" font-weight="700">DATABASE STATUS</text>
+      <text x="20" y="55" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">MongoDB OK</text>
+    </g>
+
+    <!-- Data Table Visual -->
+    <g transform="translate(30, 160)">
+      <rect width="480" height="150" rx="10" fill="rgba(0, 0, 0, 0.3)" stroke="rgba(255, 255, 255, 0.08)" />
+      <text x="20" y="25" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="11" font-weight="700">RECENT BORROWING TRANSACTIONS (REST LOGS)</text>
+
+      <!-- Row 1 -->
+      <line x1="20" y1="40" x2="460" y2="40" stroke="rgba(255, 255, 255, 0.08)" />
+      <text x="20" y="62" fill="#f8fafc" font-family="monospace" font-size="11">Clean Code (Robert C. Martin)</text>
+      <text x="280" y="62" fill="#94a3b8" font-family="monospace" font-size="10">USER-9041</text>
+      <rect x="390" y="48" width="65" height="20" rx="4" fill="rgba(16, 185, 129, 0.2)" />
+      <text x="422" y="62" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">ISSUED</text>
+
+      <!-- Row 2 -->
+      <line x1="20" y1="78" x2="460" y2="78" stroke="rgba(255, 255, 255, 0.08)" />
+      <text x="20" y="100" fill="#f8fafc" font-family="monospace" font-size="11">Design Patterns (GoF)</text>
+      <text x="280" y="100" fill="#94a3b8" font-family="monospace" font-size="10">USER-3382</text>
+      <rect x="390" y="86" width="65" height="20" rx="4" fill="rgba(59, 130, 246, 0.2)" />
+      <text x="422" y="100" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">RETURNED</text>
+
+      <!-- Row 3 -->
+      <line x1="20" y1="116" x2="460" y2="116" stroke="rgba(255, 255, 255, 0.08)" />
+      <text x="20" y="138" fill="#f8fafc" font-family="monospace" font-size="11">The Pragmatic Programmer</text>
+      <text x="280" y="138" fill="#94a3b8" font-family="monospace" font-size="10">USER-8812</text>
+      <rect x="390" y="124" width="65" height="20" rx="4" fill="rgba(16, 185, 129, 0.2)" />
+      <text x="422" y="138" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">ISSUED</text>
+    </g>
+  </g>
+</svg>

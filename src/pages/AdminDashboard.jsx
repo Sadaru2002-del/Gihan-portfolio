@@ -1081,11 +1081,25 @@ const AdminDashboard = () => {
                       <div style={styles.itemList}>
                         {projects.map((proj) => (
                           <div key={proj._id} style={styles.itemCard} className="glass-card">
-                            <div style={styles.itemDetails}>
-                              <div style={styles.itemTitle}>{proj.title}</div>
-                              <div style={styles.itemMeta}>
-                                <span style={styles.itemBadge}>{proj.category}</span>
-                                <span>LOC: {proj.codeMetrics?.linesOfCode || 0}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
+                              <div style={{ width: '46px', height: '46px', borderRadius: '8px', overflow: 'hidden', background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', flexShrink: 0 }}>
+                                {proj.imageUrl ? (
+                                  <img
+                                    src={proj.imageUrl}
+                                    alt={proj.title}
+                                    onError={(e) => { e.target.onerror = null; e.target.src = '/projects/portfolio_3d.svg'; }}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                  />
+                                ) : (
+                                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>💻</div>
+                                )}
+                              </div>
+                              <div style={styles.itemDetails}>
+                                <div style={styles.itemTitle}>{proj.title}</div>
+                                <div style={styles.itemMeta}>
+                                  <span style={styles.itemBadge}>{proj.category}</span>
+                                  <span>LOC: {proj.codeMetrics?.linesOfCode || 0}</span>
+                                </div>
                               </div>
                             </div>
                             <div style={styles.itemActions}>

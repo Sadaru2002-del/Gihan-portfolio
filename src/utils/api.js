@@ -2,6 +2,14 @@ import { supabase, isSupabaseConfigured } from '../supabase';
 
 const API_BASE = 'http://localhost:5000/api';
 
+const defaultProjectImages = {
+  'proj-1': '/projects/life_resilience.svg',
+  'proj-2': '/projects/portfolio_3d.svg',
+  'proj-3': '/projects/lumina_dining.svg',
+  'proj-4': '/projects/library_system.svg',
+  'proj-5': '/projects/ecommerce_clothing.svg'
+};
+
 // Default initial seed data for local storage / fallback resilience
 const initialSeedData = {
   projects: [
@@ -15,7 +23,7 @@ const initialSeedData = {
       technologies: ['React', 'Firebase', 'AI Coach', 'i18n'],
       githubLink: 'https://github.com/Sadaru2002-del',
       liveLink: '',
-      imageUrl: '',
+      imageUrl: '/projects/life_resilience.svg',
       status: 'Completed',
       featured: true,
       codeMetrics: { linesOfCode: 12500, testCoverage: 90 },
@@ -33,7 +41,7 @@ const initialSeedData = {
       technologies: ['React', 'Three.js', 'Supabase', 'PWA', 'Recharts'],
       githubLink: 'https://github.com/Sadaru2002-del/Gihan-portfolio',
       liveLink: 'http://localhost:5173/',
-      imageUrl: 'https://quaattpwaoqojzlvpbaz.supabase.co/storage/v1/object/public/portfolio/projects/1792085697858_Screenshot_2026-10-15_224321.png',
+      imageUrl: '/projects/portfolio_3d.svg',
       status: 'Completed',
       featured: true,
       codeMetrics: { linesOfCode: 10200, testCoverage: 94 },
@@ -51,7 +59,7 @@ const initialSeedData = {
       technologies: ['Node.js', 'Express', 'SQLite', 'RESTful API', 'Glassmorphism'],
       githubLink: 'https://github.com/Sadaru2002-del',
       liveLink: '',
-      imageUrl: '',
+      imageUrl: '/projects/lumina_dining.svg',
       status: 'Completed',
       featured: true,
       codeMetrics: { linesOfCode: 14800, testCoverage: 91 },
@@ -69,7 +77,7 @@ const initialSeedData = {
       technologies: ['Node.js', 'Express', 'MongoDB', 'Mongoose ODM', 'REST API'],
       githubLink: 'https://github.com/Sadaru2002-del',
       liveLink: '',
-      imageUrl: '',
+      imageUrl: '/projects/library_system.svg',
       status: 'Completed',
       featured: false,
       codeMetrics: { linesOfCode: 8500, testCoverage: 88 },
@@ -87,7 +95,7 @@ const initialSeedData = {
       technologies: ['HTML', 'CSS', 'JavaScript', 'Responsive UI'],
       githubLink: 'https://github.com/Sadaru2002-del',
       liveLink: '',
-      imageUrl: '',
+      imageUrl: '/projects/ecommerce_clothing.svg',
       status: 'Completed',
       featured: false,
       codeMetrics: { linesOfCode: 6200, testCoverage: 85 },
@@ -237,13 +245,35 @@ In modern software engineering, web accessibility (a11y) is not a feature—it i
   }
 };
 
+// Normalize project images so dead Supabase URLs or missing images are instantly repaired
+const normalizeProjectImages = (projectsList) => {
+  if (!Array.isArray(projectsList)) return projectsList;
+  return projectsList.map((p, idx) => {
+    const key = p.id || p._id || `proj-${idx + 1}`;
+    const defaultImg = defaultProjectImages[key] || defaultProjectImages[`proj-${idx + 1}`] || '/projects/portfolio_3d.svg';
+    if (!p.imageUrl || p.imageUrl.includes('quaattpwaoqojzlvpbaz.supabase.co')) {
+      return { ...p, imageUrl: defaultImg };
+    }
+    return p;
+  });
+};
+
 // Local storage helper
 const getLocalStore = (key) => {
   try {
     const raw = localStorage.getItem(`gihan_sb_${key}`);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (key === 'projects' && Array.isArray(parsed)) {
+        const normalized = normalizeProjectImages(parsed);
+        localStorage.setItem(`gihan_sb_${key}`, JSON.stringify(normalized));
+        return normalized;
+      }
+      return parsed;
+    }
   } catch (e) {}
-  return initialSeedData[key] || [];
+  const initial = initialSeedData[key] || [];
+  return key === 'projects' ? normalizeProjectImages(initial) : initial;
 };
 
 const setLocalStore = (key, data) => {
@@ -389,7 +419,7 @@ export const api = {
           .order('created_at', { ascending: false });
 
         if (!error && data && data.length > 0) {
-          const transformed = data.map(transformProject);
+          const transformed = normalizeProjectImages(data.map(transformProject));
           setLocalStore('projects', transformed);
           return transformed;
         }
@@ -398,7 +428,7 @@ export const api = {
       }
     }
 
-    return (cached && cached.length > 0) ? cached : initialSeedData.projects;
+    return (cached && cached.length > 0) ? normalizeProjectImages(cached) : normalizeProjectImages(initialSeedData.projects);
   },
 
   createProject: async (projectData) => {
